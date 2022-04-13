@@ -1,5 +1,5 @@
 package gamedetails;
 
-public class TestClass {
+public class Test {
 
 }
