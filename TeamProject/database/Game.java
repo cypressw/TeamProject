@@ -1,5 +1,7 @@
 package database;
 
+import gamedetails.Board;
+
 public class Game {
 	private Player player1;
 	private Player player2;

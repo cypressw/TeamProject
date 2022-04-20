@@ -5,7 +5,6 @@ public class Board {
 	private Ship[] ships;
 	private int shipCount;
 
-
 	public Board() {
 		grid = new Space[10][10];
 		shipCount = 5;
