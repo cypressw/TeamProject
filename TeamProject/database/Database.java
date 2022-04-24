@@ -55,8 +55,18 @@ public class Database {
 		players = users;
 	}
 	
-	public void addPlayers(Player newUser) {
-		players.put(newUser.getID(), newUser);
+	public boolean addPlayers(Player newUser) {
+		String dml = "INSERT INTO `users`(`username`, `password`) VALUES (\'" 
+				+ newUser.getUsername() + "\', aes_encrypt(\'" + newUser.getPassword() 
+				+ "\', \'key\'));";
+		try {
+			executeDML(dml);
+			players.put(newUser.getID(), newUser);
+		} catch (Exception e) {
+			return false;
+		};
+		
+		return true;
 	}
 	
 	public HashMap<Integer, Player> getPlayers() {

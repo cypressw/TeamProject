@@ -1,6 +1,9 @@
 package gamedetails;
 
-public class Board {
+import java.io.*;
+
+public class Board implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private Space[][] grid;
 	private Ship[] ships;
 	private int shipCount;

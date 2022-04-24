@@ -3,6 +3,7 @@ package database;
 public class Player {
 	private int id;
 	private LoginData credentials;
+	private boolean connected;
 	
 	public Player(int id, LoginData ld) {
 		setID(id);
@@ -23,5 +24,21 @@ public class Player {
 	
 	public LoginData getCredentials() {
 		return credentials;
+	}
+	
+	public String getUsername() {
+		return credentials.getUsername();
+	}
+	
+	public String getPassword() {
+		return credentials.getPassword();
+	}
+	
+	public void setConnected(boolean x) {
+		connected = x;
+	}
+	
+	public boolean getConnected() {
+		return connected;
 	}
 }
