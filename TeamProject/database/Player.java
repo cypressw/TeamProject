@@ -1,21 +1,11 @@
 package database;
 
 public class Player {
-	private int id;
 	private LoginData credentials;
 	private boolean connected;
 	
-	public Player(int id, LoginData ld) {
-		setID(id);
+	public Player(LoginData ld) {
 		setCredentials(ld);
-	}
-	
-	public void setID(int id) {
-		this.id = id;
-	}
-	
-	public int getID() {
-		return id;
 	}
 	
 	public void setCredentials(LoginData ld) {

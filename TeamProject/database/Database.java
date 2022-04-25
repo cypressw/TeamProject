@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Database {
 	private Connection conn;
-	private HashMap<Integer, Player> players;
+	private HashMap<String, Player> players;
 	  
 	//Add any other data fields you like – at least a Connection object is mandatory
 	public Database(String fn)
@@ -51,7 +51,7 @@ public class Database {
 	    return conn;
 	}
 	
-	public void setPlayers(HashMap<Integer, Player> users) {
+	public void setPlayers(HashMap<String, Player> users) {
 		players = users;
 	}
 	
@@ -61,7 +61,7 @@ public class Database {
 				+ "\', \'key\'));";
 		try {
 			executeDML(dml);
-			players.put(newUser.getID(), newUser);
+			players.put(newUser.getUsername(), newUser);
 		} catch (Exception e) {
 			return false;
 		};
@@ -69,7 +69,7 @@ public class Database {
 		return true;
 	}
 	
-	public HashMap<Integer, Player> getPlayers() {
+	public HashMap<String, Player> getPlayers() {
 		return players;
 	}
 	  

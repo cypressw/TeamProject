@@ -7,6 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import controllers.CreateAccountControl;
+
 import javax.swing.JButton;
 
 public class CreateAccountPanel extends JPanel {
@@ -14,10 +17,11 @@ public class CreateAccountPanel extends JPanel {
 	private JTextField password;
 	private JTextField verifyPassword;
 	private JLabel errorLabel;
+	private CreateAccountControl cac;
 	
-	// add CreateAccountControl c once avaliable
 	public CreateAccountPanel() {
 		setLayout(null);
+		cac = new CreateAccountControl(this, null);
 		
 		JLabel lblLogIn = new JLabel("CREATE ACCOUNT");
 		lblLogIn.setBounds(138, 21, 193, 22);
@@ -85,10 +89,11 @@ public class CreateAccountPanel extends JPanel {
 	}
 	
 	public void setError(String text, Color color) {
-		
+		errorLabel.setText(text);
+		errorLabel.setBackground(color);
 	}
 	
 	public void setError(JLabel errorL) {
-		
+		errorLabel = errorL;
 	}
 }

@@ -6,13 +6,17 @@ import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import database.Database;
+
 public class GameGUI extends JFrame {
 	//private GameClient client; 
 	private CardLayout cardLayout;
+	private Database db;
 	
 	public GameGUI() {
 		this.setTitle("BATTLESHIP!");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		db = new Database("./database/db.properties");
 		
 		cardLayout = new CardLayout();
 	    JPanel container = new JPanel(cardLayout);
