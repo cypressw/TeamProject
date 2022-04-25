@@ -4,14 +4,20 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import controllers.LogoutControl;
+
 import javax.swing.JButton;
 
 public class LogOutPanel extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private String message;
+	private LogoutControl loc;
 	
 	// no LogOutPanel control?
-	public LogOutPanel(String message) {
+	public LogOutPanel(String message, LogoutControl control) {
 		setLayout(null);
+		loc = control;
 		
 		// do we really need a message here?
 		JLabel lblAreYouSure = new JLabel("Are you sure you want to log out?");

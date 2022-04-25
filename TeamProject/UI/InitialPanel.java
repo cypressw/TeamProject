@@ -15,9 +15,9 @@ public class InitialPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private InitialControl ic;
 	
-	public InitialPanel() {
+	public InitialPanel(InitialControl control) {
 		setLayout(null);
-		ic = new InitialControl(this);
+		ic = control;
 		
 		JLabel welcome = new JLabel("WELCOME TO BATTLESHIP!");
 		welcome.setBounds(37, 31, 373, 22);

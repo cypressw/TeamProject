@@ -11,9 +11,9 @@ import java.awt.CardLayout;
 import java.awt.Color;
 
 public class InitialControl implements ActionListener {
-	private InitialPanel container;
+	private JPanel container;
 	
-	public InitialControl(InitialPanel panel) {
+	public InitialControl(JPanel panel) {
 		setContainer(panel);
 	}
 	
@@ -38,7 +38,7 @@ public class InitialControl implements ActionListener {
 		return container;
 	}
 
-	public void setContainer(InitialPanel container) {
+	public void setContainer(JPanel container) {
 		this.container = container;
 	}
 }

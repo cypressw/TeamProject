@@ -4,15 +4,21 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import controllers.WinLoseControl;
+
 import java.awt.Color;
 import javax.swing.JButton;
 
 public class WinLosePanel extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private String message;
+	private WinLoseControl wlc;
 	
 	// add WinLoseControl c once avaliable
-	public WinLosePanel() {
+	public WinLosePanel(WinLoseControl control) {
 		setLayout(null);
+		wlc = control;
 		
 		// eventually, message will replace "you lost"
 		JLabel lblYouLost = new JLabel("YOU LOST!");

@@ -13,23 +13,23 @@ import java.util.ArrayList;
 import database.*;
 
 public class CreateAccountControl implements ActionListener {
-	private CreateAccountPanel container;
+	private JPanel container;
 	private GameClient client;
 	private CreateAccountData data;
 	private Database db;
 	
-	public CreateAccountControl(CreateAccountPanel panel, GameClient client) {
+	public CreateAccountControl(JPanel panel, GameClient client) {
 		setContainer(panel);
 		this.setClient(client);
 		db = new Database("./database/db.properties");
 	}
 	
 	public void createAccountSuccess() {
-		container.setError("Account Created Successfully! Press back to log in.", Color.GREEN);
+		((CreateAccountPanel) container).setError("Account Created Successfully! Press back to log in.", Color.GREEN);
 	}
 	
 	public void createAccountFailed(String error) {
-		container.setError(error, Color.RED);
+		((CreateAccountPanel) container).setError(error, Color.RED);
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
@@ -37,9 +37,9 @@ public class CreateAccountControl implements ActionListener {
 		ArrayList<String> result = new ArrayList<String>();
 		
 		if (action.equals("GO!")) {
-			String user = container.getUsername();
-			String pass = container.getPassword();
-			String verify = container.getVerifyPassword();
+			String user = ((CreateAccountPanel) container).getUsername();
+			String pass = ((CreateAccountPanel) container).getPassword();
+			String verify = ((CreateAccountPanel) container).getVerifyPassword();
 			
 			if (!pass.equals(verify)) {
 				createAccountFailed("Password unable to be verified. Passwords should match.");
@@ -67,7 +67,7 @@ public class CreateAccountControl implements ActionListener {
 		return container;
 	}
 
-	public void setContainer(CreateAccountPanel container) {
+	public void setContainer(JPanel container) {
 		this.container = container;
 	}
 
@@ -85,5 +85,9 @@ public class CreateAccountControl implements ActionListener {
 
 	public void setData(CreateAccountData data) {
 		this.data = data;
+	}
+
+	public void displayError(String message) {
+		
 	}
 }

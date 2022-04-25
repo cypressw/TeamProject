@@ -8,15 +8,18 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import controllers.*;
 
 public class LoginPanel extends JPanel {
 	private JTextField usernameField;
 	private JTextField passwordField;
 	private JLabel errorLabel;
+	private LoginControl lc;
 	
 	// add LoginControl c once avaliable
-	public LoginPanel() {
+	public LoginPanel(LoginControl control) {
 		setLayout(null);
+		lc = control;
 		
 		JLabel lblLogIn = new JLabel("LOG IN");
 		lblLogIn.setHorizontalAlignment(SwingConstants.CENTER);

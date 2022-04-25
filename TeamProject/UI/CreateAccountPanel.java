@@ -19,9 +19,9 @@ public class CreateAccountPanel extends JPanel {
 	private JLabel errorLabel;
 	private CreateAccountControl cac;
 	
-	public CreateAccountPanel() {
+	public CreateAccountPanel(CreateAccountControl control) {
 		setLayout(null);
-		cac = new CreateAccountControl(this, null);
+		cac = control;
 		
 		JLabel lblLogIn = new JLabel("CREATE ACCOUNT");
 		lblLogIn.setBounds(138, 21, 193, 22);

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import database.Database;
+import controllers.*;
 
 public class GameGUI extends JFrame {
 	//private GameClient client; 
@@ -21,20 +22,30 @@ public class GameGUI extends JFrame {
 		cardLayout = new CardLayout();
 	    JPanel container = new JPanel(cardLayout);
 	    
-	    // controllers will go here
+	    // controllers will go here (add client as parameter later)
+	    InitialControl ic = new InitialControl(container);
+	    LoginControl lc = new LoginControl(container, null);
+	    CreateAccountControl cac = new CreateAccountControl(container, null);
+	    AwaitOpponentControl aoc = new AwaitOpponentControl(container, null);
+	    BoardSetupControl bsc = new BoardSetupControl(container, null);
+	    LobbyControl lobc = new LobbyControl(container, null);
+	    GameplayControl gc = new GameplayControl(container, null);
+	    WinLoseControl wlc = new WinLoseControl(container, null);
+	    LogoutControl loc = new LogoutControl(container, null);
+	    
 	    
 	    // client info goes here (possibly also other server setup stuff!)
 	    
 	    // views setup + add to container
-	    JPanel InitialPanel = new InitialPanel();
-	    JPanel LoginPanel = new LoginPanel();
-	    JPanel CreateAccountPanel = new CreateAccountPanel();
-	    JPanel AwaitOpponentPanel = new AwaitOpponentPanel();
-	    JPanel BoardSetupPanel = new BoardSetupPanel();
-	    JPanel LobbyPanel = new LobbyPanel();
-	    JPanel GameplayPanel = new GameplayPanel();
-	    JPanel WinLosePanel = new LogOutPanel("");
-	    JPanel LogOutPanel = new LogOutPanel("");
+	    JPanel InitialPanel = new InitialPanel(ic);
+	    JPanel LoginPanel = new LoginPanel(lc);
+	    JPanel CreateAccountPanel = new CreateAccountPanel(cac);
+	    JPanel AwaitOpponentPanel = new AwaitOpponentPanel(aoc);
+	    JPanel BoardSetupPanel = new BoardSetupPanel(bsc);
+	    JPanel LobbyPanel = new LobbyPanel(lobc);
+	    JPanel GameplayPanel = new GameplayPanel(gc);
+	    JPanel WinLosePanel = new WinLosePanel(wlc);
+	    JPanel LogOutPanel = new LogOutPanel("", loc);
 	    
 	    container.add(InitialPanel, "1");
 	    container.add(LoginPanel, "2");
@@ -51,7 +62,7 @@ public class GameGUI extends JFrame {
 	    this.setLayout(new GridBagLayout());
 	    this.add(container);
 
-	    this.setSize(550, 350);
+	    this.setSize(800, 600);
 	    this.setVisible(true);
 	}
 	
