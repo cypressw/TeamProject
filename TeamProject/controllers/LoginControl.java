@@ -8,6 +8,7 @@ import database.LoginData;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.*;
+import java.io.IOException;
 
 public class LoginControl implements ActionListener {
 	private JPanel container;
@@ -45,8 +46,9 @@ public class LoginControl implements ActionListener {
 	    	{
 	    		client.sendToServer(data);
 	    	}
-	    	catch (Exception e)
+	    	catch (IOException e)
 	    	{
+	    		e.printStackTrace();
 	    		displayError("Error connecting to the server.");
 	    	}
 	    }

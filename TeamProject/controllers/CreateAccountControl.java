@@ -8,20 +8,17 @@ import UI.InitialPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
-
-import database.*;
 
 public class CreateAccountControl implements ActionListener {
 	private JPanel container;
 	private GameClient client;
 	private CreateAccountData data;
-	private Database db;
 	
 	public CreateAccountControl(JPanel panel, GameClient client) {
 		setContainer(panel);
-		this.setClient(client);
-		db = new Database("./database/db.properties");
+		this.client = client;
 	}
 	
 	public void createAccountSuccess() {
@@ -65,7 +62,8 @@ public class CreateAccountControl implements ActionListener {
 	    	try {
 	    		client.sendToServer(data);
 	    	}
-	    	catch (Exception e) {
+	    	catch (IOException e) {
+	    		e.printStackTrace();
 	    		displayError("Error connecting to the server.");
 	    	}
 	    }
@@ -77,14 +75,6 @@ public class CreateAccountControl implements ActionListener {
 
 	public void setContainer(JPanel container) {
 		this.container = container;
-	}
-
-	public GameClient getClient() {
-		return client;
-	}
-
-	public void setClient(GameClient client) {
-		this.client = client;
 	}
 
 	public CreateAccountData getData() {

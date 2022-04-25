@@ -1,8 +1,9 @@
 package controllers;
 
 import database.Player;
+import java.io.*;
 
-public class WinLoseData {
+public class WinLoseData implements Serializable{
 	private Player winner;
 	private Player loser;
 	

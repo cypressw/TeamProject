@@ -78,6 +78,10 @@ public class GameClient extends AbstractClient
  			else if (message.equals("OpponentConnected")) {
  				aoc.connectionDetected();
  			}
+ 			
+ 			else if (message.equals("GuessMade")) {
+ 				
+ 			}
  		}
     
  		else if (arg0 instanceof Error) {

@@ -1,6 +1,8 @@
 package controllers;
 
-public class LobbyData {
+import java.io.*;
+
+public class LobbyData implements Serializable{
 	private String username;
 	private String chosenGameID;
 	
