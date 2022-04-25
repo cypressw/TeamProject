@@ -21,7 +21,7 @@ public class GameServer extends AbstractServer {
 	public GameServer() {
 		super(12345);
 	    this.setTimeout(500);
-	    db = new Database("./database/db.properties");
+	    db = new Database("./TeamProject/database/db.properties");
 	}
 
 	public void setDatabase(Database database) {

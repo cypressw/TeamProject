@@ -23,30 +23,30 @@ public class WinLosePanel extends JPanel {
 		// eventually, message will replace "you lost"
 		JLabel lblYouLost = new JLabel("YOU LOST!");
 		lblYouLost.setHorizontalAlignment(SwingConstants.CENTER);
-		lblYouLost.setFont(new Font("Modern No. 20", Font.BOLD | Font.ITALIC, 40));
-		lblYouLost.setBounds(43, 58, 350, 49);
+		lblYouLost.setFont(new Font("Modern No. 20", Font.PLAIN, 47));
+		lblYouLost.setBounds(223, 115, 350, 49);
 		add(lblYouLost);
 		
 		JLabel lblPlayAgain = new JLabel("Play Again?");
 		lblPlayAgain.setForeground(Color.PINK);
 		lblPlayAgain.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPlayAgain.setFont(new Font("Modern No. 20", Font.BOLD, 24));
-		lblPlayAgain.setBounds(43, 117, 350, 49);
+		lblPlayAgain.setFont(new Font("Modern No. 20", Font.PLAIN, 44));
+		lblPlayAgain.setBounds(223, 175, 350, 49);
 		add(lblPlayAgain);
 		
 		JButton btnNewButton = new JButton("Play Again");
-		btnNewButton.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
-		btnNewButton.setBounds(35, 177, 99, 30);
+		btnNewButton.setFont(new Font("Modern No. 20", Font.PLAIN, 26));
+		btnNewButton.setBounds(43, 267, 228, 49);
 		add(btnNewButton);
 		
 		JButton btnBackToMain = new JButton("Back To Main Menu");
-		btnBackToMain.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
-		btnBackToMain.setBounds(144, 177, 148, 30);
+		btnBackToMain.setFont(new Font("Modern No. 20", Font.PLAIN, 23));
+		btnBackToMain.setBounds(285, 267, 228, 49);
 		add(btnBackToMain);
 		
 		JButton btnExitBattleship = new JButton("Exit Battleship");
-		btnExitBattleship.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
-		btnExitBattleship.setBounds(302, 177, 119, 30);
+		btnExitBattleship.setFont(new Font("Modern No. 20", Font.PLAIN, 26));
+		btnExitBattleship.setBounds(523, 267, 228, 49);
 		add(btnExitBattleship);
 		
 	}

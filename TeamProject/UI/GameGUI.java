@@ -27,7 +27,7 @@ public class GameGUI extends JFrame {
 		
 		this.setTitle("BATTLESHIP!");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		db = new Database("./database/db.properties");
+		db = new Database("./TeamProject/database/db.properties");
 		
 		cardLayout = new CardLayout();
 	    container = new JPanel(cardLayout);
@@ -68,8 +68,8 @@ public class GameGUI extends JFrame {
 	    
 	    this.add(container);
 
-	    this.setSize(800, 600);
-	    this.setResizable(false);
+	    this.setSize(800, 575);
+	    this.setResizable(true);
 	    this.setVisible(true);
 	}
 	

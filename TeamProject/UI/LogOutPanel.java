@@ -22,18 +22,18 @@ public class LogOutPanel extends JPanel {
 		// do we really need a message here?
 		JLabel lblAreYouSure = new JLabel("Are you sure you want to log out?");
 		lblAreYouSure.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAreYouSure.setFont(new Font("Modern No. 20", Font.BOLD | Font.ITALIC, 25));
-		lblAreYouSure.setBounds(42, 100, 358, 49);
+		lblAreYouSure.setFont(new Font("Modern No. 20", Font.BOLD | Font.ITALIC, 49));
+		lblAreYouSure.setBounds(46, 169, 705, 49);
 		add(lblAreYouSure);
 		
 		JButton btnNewButton = new JButton("Log Out");
-		btnNewButton.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
-		btnNewButton.setBounds(87, 156, 109, 32);
+		btnNewButton.setFont(new Font("Modern No. 20", Font.PLAIN, 28));
+		btnNewButton.setBounds(130, 250, 238, 57);
 		add(btnNewButton);
 		
 		JButton btnBackToLobby = new JButton("Back To Lobby");
-		btnBackToLobby.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
-		btnBackToLobby.setBounds(236, 156, 115, 32);
+		btnBackToLobby.setFont(new Font("Modern No. 20", Font.PLAIN, 28));
+		btnBackToLobby.setBounds(408, 250, 238, 57);
 		add(btnBackToLobby);
 		
 	}

@@ -25,56 +25,57 @@ public class CreateAccountPanel extends JPanel {
 		cac = control;
 		
 		JLabel lblLogIn = new JLabel("CREATE ACCOUNT");
-		lblLogIn.setBounds(138, 21, 193, 22);
 		lblLogIn.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogIn.setFont(new Font("Modern No. 20", Font.BOLD, 20));
+		lblLogIn.setFont(new Font("Modern No. 20", Font.BOLD, 60));
+		lblLogIn.setBounds(87, 98, 622, 67);
 		add(lblLogIn);
 		
 		usernameField = new JTextField();
-		usernameField.setBounds(170, 65, 212, 22);
-		usernameField.setColumns(10);
+		usernameField.setBounds(293, 199, 362, 30);
 		add(usernameField);
+		usernameField.setColumns(10);
 		
 		password = new JPasswordField();
-		password.setBounds(170, 98, 212, 22);
 		password.setColumns(10);
+		password.setBounds(293, 240, 362, 30);
 		add(password);
 		
 		verifyPassword = new JPasswordField();
 		verifyPassword.setColumns(10);
-		verifyPassword.setBounds(170, 131, 212, 22);
+		verifyPassword.setBounds(293, 285, 362, 30);
 		add(verifyPassword);
 		
 		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setBounds(94, 69, 78, 14);
-		lblUsername.setFont(new Font("Modern No. 20", Font.PLAIN, 16));
+		lblUsername.setFont(new Font("Modern No. 20", Font.PLAIN, 30));
+		lblUsername.setBounds(160, 195, 222, 30);
 		add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(94, 102, 66, 14);
-		lblPassword.setFont(new Font("Modern No. 20", Font.PLAIN, 16));
+		lblPassword.setFont(new Font("Modern No. 20", Font.PLAIN, 30));
+		lblPassword.setBounds(160, 240, 222, 30);
 		add(lblPassword);
 		
 		JLabel lblVerifyPassword = new JLabel("Verify Password:");
-		lblVerifyPassword.setFont(new Font("Modern No. 20", Font.PLAIN, 16));
-		lblVerifyPassword.setBounds(50, 135, 110, 14);
+		lblVerifyPassword.setFont(new Font("Modern No. 20", Font.PLAIN, 30));
+		lblVerifyPassword.setBounds(72, 281, 222, 30);
 		add(lblVerifyPassword);
 		
 		JButton btnGo = new JButton("GO!");
-		btnGo.setBounds(124, 172, 78, 23);
-		btnGo.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
+		btnGo.setFont(new Font("Modern No. 20", Font.PLAIN, 25));
+		btnGo.setBounds(232, 337, 166, 45);
 		btnGo.addActionListener(cac);
 		add(btnGo);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(258, 172, 78, 23);
-		btnBack.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
+		btnBack.setFont(new Font("Modern No. 20", Font.PLAIN, 25));
+		btnBack.setBounds(436, 337, 166, 45);
 		btnBack.addActionListener(cac);
 		add(btnBack);
 		
 		errorLabel = new JLabel("");
-		errorLabel.setBounds(37, 220, 363, 22);
-		errorLabel.setFont(new Font("Modern No. 20", Font.PLAIN, 18));
+		errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		errorLabel.setFont(new Font("Modern No. 20", Font.PLAIN, 25));
+		errorLabel.setBounds(33, 427, 732, 67);
 		add(errorLabel);
 		
 	}

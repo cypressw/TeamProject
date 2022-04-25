@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 import controllers.InitialControl;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 public class InitialPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -21,31 +22,32 @@ public class InitialPanel extends JPanel {
 		
 		JLabel welcome = new JLabel("WELCOME TO BATTLESHIP!");
 		welcome.setHorizontalAlignment(SwingConstants.CENTER);
-		welcome.setBounds(127, 10, 555, 80);
-		welcome.setFont(new Font("Modern No. 20", Font.BOLD, 38));
+		welcome.setBounds(72, 26, 648, 80);
+		welcome.setFont(new Font("Modern No. 20", Font.BOLD, 46));
 		add(welcome);
 		
 		JButton create = new JButton("Create Account");
-		create.setFont(new Font("Modern No. 20", Font.PLAIN, 18));
-		create.setBounds(218, 134, 147, 45);
+		create.setForeground(Color.BLACK);
+		create.setFont(new Font("Modern No. 20", Font.PLAIN, 25));
+		create.setBounds(151, 123, 227, 78);
 		create.addActionListener(ic);
 		add(create);
 		
 		JButton login = new JButton("Log In");
-		login.setFont(new Font("Modern No. 20", Font.PLAIN, 18));
-		login.setBounds(218, 209, 147, 45);
+		login.setFont(new Font("Modern No. 20", Font.PLAIN, 25));
+		login.setBounds(151, 224, 227, 80);
 		login.addActionListener(ic);
 		add(login);
 		
 		// we can change these names if we want, they don't really matter
 		JLabel lblNewLabel_1 = new JLabel("New user? Log in here.");
-		lblNewLabel_1.setFont(new Font("Modern No. 20", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(423, 155, 227, 14);
+		lblNewLabel_1.setFont(new Font("Modern No. 20", Font.PLAIN, 23));
+		lblNewLabel_1.setBounds(401, 144, 227, 35);
 		add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Existing user? Log in here.");
-		lblNewLabel_1_1.setFont(new Font("Modern No. 20", Font.PLAIN, 18));
-		lblNewLabel_1_1.setBounds(423, 219, 227, 24);
+		lblNewLabel_1_1.setFont(new Font("Modern No. 20", Font.PLAIN, 23));
+		lblNewLabel_1_1.setBounds(401, 251, 250, 24);
 		add(lblNewLabel_1_1);
 		
 		JLabel lblCreatedByJackson = new JLabel("Jackson Torregrossa, Aaron Moody, Cypress Wright, and Levi Lewis");
@@ -62,7 +64,6 @@ public class InitialPanel extends JPanel {
 		lblCreatedBy.setBounds(10, 444, 430, 29);
 		add(lblCreatedBy);
 		
-		this.setSize(800, 600);
-		
+		this.setPreferredSize(new Dimension(800, 540));
 	}
 }

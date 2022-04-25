@@ -20,8 +20,8 @@ public class AwaitOpponentPanel extends JPanel {
 		
 		status = new JLabel("WAITING FOR PLAYER...");
 		status.setHorizontalAlignment(SwingConstants.CENTER);
-		status.setFont(new Font("Modern No. 20", Font.BOLD | Font.ITALIC, 25));
-		status.setBounds(48, 101, 350, 49);
+		status.setFont(new Font("Modern No. 20", Font.BOLD | Font.ITALIC, 59));
+		status.setBounds(41, 211, 724, 73);
 		add(status);
 	}
 	
