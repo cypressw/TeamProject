@@ -4,7 +4,7 @@ import database.*;
 import javax.swing.*;
 import ocsf.client.*;
 
-public class GameClient extends AbstractClient{
+public class GameClient extends AbstractClient {
 	private Player user;
 	private JPanel container;
 	private LoginControl loginc;
