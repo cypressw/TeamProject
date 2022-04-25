@@ -1,9 +1,10 @@
 package controllers;
 
 import database.Player;
+import java.io.*;
 import gamedetails.Space;
 
-public class GameplayData {
+public class GameplayData implements Serializable{
 	private Space guess;
 	private Player player;
 	private String status;

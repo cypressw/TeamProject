@@ -1,6 +1,8 @@
 package controllers;
 
-public class AwaitOpponentData {
+import java.io.*;
+
+public class AwaitOpponentData implements Serializable{
 	private String gameID;
 	private String username;
 	private String status;

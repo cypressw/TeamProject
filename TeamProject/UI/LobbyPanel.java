@@ -17,10 +17,10 @@ public class LobbyPanel extends JPanel {
 	private JLabel errorLabel;
 	private LobbyControl lc;
 	
-	// add LobbyControl c once avaliable
-	public LobbyPanel() {
-		lc = new LobbyControl(this);
+
+	public LobbyPanel(LobbyControl control) {
 		setLayout(null);
+		lc = control;
 		
 		JLabel lblLobby = new JLabel("LOBBY");
 		lblLobby.setHorizontalAlignment(SwingConstants.CENTER);
@@ -35,37 +35,21 @@ public class LobbyPanel extends JPanel {
 		gamesList.setBounds(31, 97, 475, 243);
 		add(gamesList);
 		
-		JButton btnJoin = new JButton("Join Selected");
-		// actionListener here
-		btnJoin.addActionListener(lc);
-		btnJoin.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
-		btnJoin.setBounds(31, 62, 111, 23);
-		add(btnJoin);
+		JButton btnNewButton = new JButton("Join Selected");
+		btnNewButton.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
+		btnNewButton.setBounds(31, 63, 111, 23);
+		add(btnNewButton);
 		
 		JButton btnBack = new JButton("Back");
-		// actionListener here
-		btnBack.addActionListener(lc);
 		btnBack.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
-		btnBack.setBounds(395, 62, 111, 23);
+		btnBack.setBounds(152, 63, 111, 23);
 		add(btnBack);
-		
-		JButton btnCreateGame = new JButton("Create Game");
-		// actionListener here
-		btnCreateGame.addActionListener(lc);
-		btnCreateGame.setFont(new Font("Dialog", Font.PLAIN, 13));
-		btnCreateGame.setBounds(150, 62, 111, 23);
-		add(btnCreateGame);
-		
-		JButton btnRefresh = new JButton("Refresh");
-		// actionListener here
-		btnRefresh.addActionListener(lc);
-		btnRefresh.setBounds(273, 59, 117, 29);
-		add(btnRefresh);
 		
 		errorLabel = new JLabel("");
 		errorLabel.setFont(new Font("Modern No. 20", Font.PLAIN, 18));
-		errorLabel.setBounds(157, 352, 233, 22);
+		errorLabel.setBounds(273, 64, 233, 22);
 		add(errorLabel);
+		
 	}
 	
 	public String getChosenGame() {

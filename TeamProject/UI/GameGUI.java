@@ -7,34 +7,52 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import database.Database;
+import controllers.*;
 
 public class GameGUI extends JFrame {
-	//private GameClient client; 
+	private GameClient client; 
 	private CardLayout cardLayout;
 	private Database db;
+	private JPanel container;
 	
 	public GameGUI() {
+		client = new GameClient();
+		client.setHost("localhost");
+		client.setPort(8300);
+		try {
+			client.openConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+		};
+		
 		this.setTitle("BATTLESHIP!");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		db = new Database("./database/db.properties");
 		
 		cardLayout = new CardLayout();
-	    JPanel container = new JPanel(cardLayout);
+	    container = new JPanel(cardLayout);
 	    
-	    // controllers will go here
-	    
-	    // client info goes here (possibly also other server setup stuff!)
+	    // controllers will go here (add client as parameter later)
+	    InitialControl ic = new InitialControl(container, client);
+	    LoginControl lc = new LoginControl(container, client);
+	    CreateAccountControl cac = new CreateAccountControl(container, client);
+	    AwaitOpponentControl aoc = new AwaitOpponentControl(container, client);
+	    BoardSetupControl bsc = new BoardSetupControl(container, client);
+	    LobbyControl lobc = new LobbyControl(container, client);
+	    GameplayControl gc = new GameplayControl(container, client);
+	    WinLoseControl wlc = new WinLoseControl(container, client);
+	    LogoutControl loc = new LogoutControl(container, client);
 	    
 	    // views setup + add to container
-	    JPanel InitialPanel = new InitialPanel();
-	    JPanel LoginPanel = new LoginPanel();
-	    JPanel CreateAccountPanel = new CreateAccountPanel();
-	    JPanel AwaitOpponentPanel = new AwaitOpponentPanel();
-	    JPanel BoardSetupPanel = new BoardSetupPanel();
-	    JPanel LobbyPanel = new LobbyPanel();
-	    JPanel GameplayPanel = new GameplayPanel();
-	    JPanel WinLosePanel = new LogOutPanel("");
-	    JPanel LogOutPanel = new LogOutPanel("");
+	    JPanel InitialPanel = new InitialPanel(ic);
+	    JPanel LoginPanel = new LoginPanel(lc);
+	    JPanel CreateAccountPanel = new CreateAccountPanel(cac);
+	    JPanel AwaitOpponentPanel = new AwaitOpponentPanel(aoc);
+	    JPanel BoardSetupPanel = new BoardSetupPanel(bsc);
+	    JPanel LobbyPanel = new LobbyPanel(lobc);
+	    JPanel GameplayPanel = new GameplayPanel(gc);
+	    JPanel WinLosePanel = new WinLosePanel(wlc);
+	    JPanel LogOutPanel = new LogOutPanel("", loc);
 	    
 	    container.add(InitialPanel, "1");
 	    container.add(LoginPanel, "2");
@@ -48,10 +66,10 @@ public class GameGUI extends JFrame {
 	    
 	    cardLayout.show(container, "1");
 	    
-	    this.setLayout(new GridBagLayout());
 	    this.add(container);
 
-	    this.setSize(550, 350);
+	    this.setSize(800, 600);
+	    this.setResizable(false);
 	    this.setVisible(true);
 	}
 	

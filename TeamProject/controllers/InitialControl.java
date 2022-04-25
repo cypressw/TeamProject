@@ -11,17 +11,19 @@ import java.awt.CardLayout;
 import java.awt.Color;
 
 public class InitialControl implements ActionListener {
-	private InitialPanel container;
+	private JPanel container;
+	private GameClient client;
 	
-	public InitialControl(InitialPanel panel) {
+	public InitialControl(JPanel panel, GameClient client) {
 		setContainer(panel);
+		this.client = client;
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
 		String command = ae.getActionCommand();
 		
 		if (command.equals("Create Account")) {
-			CreateAccountPanel cap = (CreateAccountPanel)container.getComponent(1);
+			CreateAccountPanel cap = (CreateAccountPanel)container.getComponent(2);
 			cap.setError("", Color.RED);
 			CardLayout cl = (CardLayout)container.getLayout();
 			cl.show(container,  "3");
@@ -38,7 +40,7 @@ public class InitialControl implements ActionListener {
 		return container;
 	}
 
-	public void setContainer(InitialPanel container) {
+	public void setContainer(JPanel container) {
 		this.container = container;
 	}
 }

@@ -1,8 +1,9 @@
 package controllers;
 
 import database.Player;
+import java.io.*;
 
-public class LogoutData {
+public class LogoutData implements Serializable{
 	private Player player;
 	private Player opponent;
 	

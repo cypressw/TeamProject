@@ -8,75 +8,73 @@ import UI.InitialPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
-import database.*;
-
 public class CreateAccountControl implements ActionListener {
-	private CreateAccountPanel container;
+	private JPanel container;
 	private GameClient client;
 	private CreateAccountData data;
-	private Database db;
 	
-	public CreateAccountControl(CreateAccountPanel panel, GameClient client) {
+	public CreateAccountControl(JPanel panel, GameClient client) {
 		setContainer(panel);
-		this.setClient(client);
-		db = new Database("./database/db.properties");
+		this.client = client;
 	}
 	
 	public void createAccountSuccess() {
-		container.setError("Account Created Successfully! Press back to log in.", Color.GREEN);
+		((CreateAccountPanel) container).setError("Account Created Successfully! Press back to log in.", Color.GREEN);
 	}
 	
 	public void createAccountFailed(String error) {
-		container.setError(error, Color.RED);
+		((CreateAccountPanel) container).setError(error, Color.RED);
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
-		String action = ae.getActionCommand();
-		ArrayList<String> result = new ArrayList<String>();
-		
-		if (action.equals("GO!")) {
-			String user = container.getUsername();
-			String pass = container.getPassword();
-			String verify = container.getVerifyPassword();
-			
-			if (!pass.equals(verify)) {
-				createAccountFailed("Password unable to be verified. Passwords should match.");
-			}
-			
-			String toProcess = "SELECT `username` FROM `users` WHERE `username`= \'" + user + "\';";
-			result = db.query(toProcess);
-			if (result.isEmpty()) {
-				createAccountFailed("Account Creation Failed! Username already taken.");
-			}
-			else {
-				createAccountSuccess();
-				data = new CreateAccountData(user, pass);
-				data.addPlayer();
-			}
-		}
-		else if (action.equals("Back")) {
-			InitialPanel ip = (InitialPanel)container.getComponent(1);
-			CardLayout cl = (CardLayout)container.getLayout();
-			cl.show(container, "2");
-		}
+	    String command = ae.getActionCommand();
+
+	    if (command.equals("Back")) {
+	    	CardLayout cardLayout = (CardLayout)container.getLayout();
+	    	cardLayout.show(container, "1");
+	    }
+
+	    else if (command.equals("GO!")) {
+	    	CreateAccountPanel createAccountPanel = (CreateAccountPanel)container.getComponent(2);
+	    	String username = createAccountPanel.getUsername();
+	    	String password = createAccountPanel.getPassword();
+	    	String passwordVerify = createAccountPanel.getVerifyPassword();
+
+	    	if (username.equals("") || password.equals("")) {
+	    		displayError("You must enter a username and password.");
+	    		return;
+	    	}
+	    	
+	    	else if (!password.equals(passwordVerify)) {
+	    		displayError("The two passwords did not match.");
+	    		return;
+	    	}
+	    	
+	    	if (password.length() < 6) {
+	    		displayError("The password must be at least 6 characters.");
+	    		return;
+	    	}
+	      
+	    	CreateAccountData data = new CreateAccountData(username, password);
+	    	try {
+	    		client.sendToServer(data);
+	    	}
+	    	catch (IOException e) {
+	    		e.printStackTrace();
+	    		displayError("Error connecting to the server.");
+	    	}
+	    }
 	}
 
 	public JPanel getContainer() {
 		return container;
 	}
 
-	public void setContainer(CreateAccountPanel container) {
+	public void setContainer(JPanel container) {
 		this.container = container;
-	}
-
-	public GameClient getClient() {
-		return client;
-	}
-
-	public void setClient(GameClient client) {
-		this.client = client;
 	}
 
 	public CreateAccountData getData() {
@@ -85,5 +83,10 @@ public class CreateAccountControl implements ActionListener {
 
 	public void setData(CreateAccountData data) {
 		this.data = data;
+	}
+
+	public void displayError(String message) {
+		CreateAccountPanel cap = (CreateAccountPanel)container.getComponent(2);
+		cap.setError(message, Color.RED);
 	}
 }

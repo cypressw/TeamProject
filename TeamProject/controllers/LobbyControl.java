@@ -1,9 +1,6 @@
 package controllers;
 
-import java.awt.CardLayout;
 import java.awt.event.*;
-import java.io.IOException;
-
 import javax.swing.*;
 
 public class LobbyControl implements ActionListener {
@@ -11,69 +8,33 @@ public class LobbyControl implements ActionListener {
 	private LobbyData data;
 	private GameClient client;
 	
-	public LobbyControl(JPanel panel) {
+	public LobbyControl(JPanel panel, GameClient client) {
 		setContainer(panel);
-		// this.setClient(client); (aaron do this)
-	}
-	
-	public void actionPerformed(ActionEvent ae) {
-		String command = ae.getActionCommand();
-		
-		if (command == "Back") {
-			CardLayout cardLayout = (CardLayout)container.getLayout();
-			cardLayout.show(container, "2");
-		}
-		else if (command == "Join Selected") {
-			//connectToGame
-			try {
-				connectToGame();
-			}
-			catch (IOException e) {
-				displayError("Could not connect to the game!");
-			}
-		}
-		else if (command == "Create Game") {
-			//createNewGame
-			try {
-				createNewGame();
-			}
-			catch (IOException e) {
-				displayError("Could not create game!");
-			}
-		}
-		else if (command == "Refresh") {
-			try {
-				refreshList();
-			}
-			catch (IOException e) {
-				displayError("Could not refresh!");
-			}
-			//refreshList
-		}
+		this.setClient(client);
 	}
 	
 	public void displayError(String error) {
 		
 	}
 	
-	public void createNewGame() throws IOException {
+	public void createNewGame() {
 		
 	}
 	
-	public void connectToGame() throws IOException {
+	public void connectToGame() {
 		
 	}
 	
-	public void refreshList() throws IOException {
-		// get data for the list 
+	public void actionPerformed(ActionEvent ae) {
+		
 	}
 	
 	public void gameConnectSuccess() {
-		System.out.println("CONNECT SUCCESS");
+		
 	}
 	
 	public void gameCreateSuccess() {
-		System.out.println("CREATE SUCCESS");
+		
 	}
 
 	public JPanel getContainer() {

@@ -1,8 +1,9 @@
 package controllers;
 
 import gamedetails.Board;
+import java.io.*;
 
-public class BoardSetupData {
+public class BoardSetupData implements Serializable{
 	private Board board;
 	private String gameID;
 	
