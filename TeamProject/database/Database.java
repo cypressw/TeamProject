@@ -83,7 +83,7 @@ public class Database {
 			String toProcess = query;
 			ResultSet rs = st.executeQuery(toProcess);
 			while (rs.next()) {
-				result.add(rs.getString("aes_decrypt(`password`, \'key\')"));
+				result.add(rs.getString("password"));
 				//counter++;
 			}
 		} catch (SQLException e) {

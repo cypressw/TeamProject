@@ -1,6 +1,8 @@
 package database;
 
-public class LoginData {
+import java.io.*;
+
+public class LoginData implements Serializable {
 	private String username;
 	private String password;
 	
