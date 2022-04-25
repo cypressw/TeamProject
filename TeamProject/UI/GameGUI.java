@@ -66,9 +66,6 @@ public class GameGUI extends JFrame {
 	    
 	    cardLayout.show(container, "1");
 	    
-//	    GridBagLayout gridBagLayout = new GridBagLayout();
-//	    gridBagLayout.rowHeights = new int[]{389};
-//	    this.setLayout(gridBagLayout);
 	    this.add(container);
 
 	    this.setSize(800, 600);

@@ -52,14 +52,14 @@ public class InitialPanel extends JPanel {
 		lblCreatedByJackson.setForeground(Color.BLACK);
 		lblCreatedByJackson.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCreatedByJackson.setFont(new Font("Modern No. 20", Font.BOLD, 23));
-		lblCreatedByJackson.setBounds(10, 561, 698, 29);
+		lblCreatedByJackson.setBounds(10, 483, 698, 29);
 		add(lblCreatedByJackson);
 		
 		JLabel lblCreatedBy = new JLabel("Created by:");
 		lblCreatedBy.setForeground(Color.BLACK);
 		lblCreatedBy.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCreatedBy.setFont(new Font("Modern No. 20", Font.BOLD, 24));
-		lblCreatedBy.setBounds(10, 522, 430, 29);
+		lblCreatedBy.setBounds(10, 444, 430, 29);
 		add(lblCreatedBy);
 		
 		this.setSize(800, 600);

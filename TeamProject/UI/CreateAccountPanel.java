@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -14,8 +15,8 @@ import javax.swing.JButton;
 
 public class CreateAccountPanel extends JPanel {
 	private JTextField usernameField;
-	private JTextField password;
-	private JTextField verifyPassword;
+	private JPasswordField password;
+	private JPasswordField verifyPassword;
 	private JLabel errorLabel;
 	private CreateAccountControl cac;
 	
@@ -34,12 +35,12 @@ public class CreateAccountPanel extends JPanel {
 		usernameField.setColumns(10);
 		add(usernameField);
 		
-		password = new JTextField();
+		password = new JPasswordField();
 		password.setBounds(170, 98, 212, 22);
 		password.setColumns(10);
 		add(password);
 		
-		verifyPassword = new JTextField();
+		verifyPassword = new JPasswordField();
 		verifyPassword.setColumns(10);
 		verifyPassword.setBounds(170, 131, 212, 22);
 		add(verifyPassword);
@@ -62,11 +63,13 @@ public class CreateAccountPanel extends JPanel {
 		JButton btnGo = new JButton("GO!");
 		btnGo.setBounds(124, 172, 78, 23);
 		btnGo.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
+		btnGo.addActionListener(cac);
 		add(btnGo);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(258, 172, 78, 23);
 		btnBack.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
+		btnBack.addActionListener(cac);
 		add(btnBack);
 		
 		errorLabel = new JLabel("");

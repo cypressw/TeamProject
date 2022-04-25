@@ -66,12 +66,15 @@ public class GameClient extends AbstractClient
  			else if (message.equals("CreateAccountSuccessful")) {
  				cac.createAccountSuccess();
  			}
+ 			
  			else if (message.equals("GameSelected")) {
  				lobc.connectToGame();
  			}
+ 			
  			else if (message.equals("CreateNewGame")) {
  				lobc.createNewGame();
  			}
+ 			
  			else if (message.equals("OpponentConnected")) {
  				aoc.connectionDetected();
  			}

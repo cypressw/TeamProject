@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -12,11 +13,10 @@ import controllers.*;
 
 public class LoginPanel extends JPanel {
 	private JTextField usernameField;
-	private JTextField passwordField;
+	private JPasswordField passwordField;
 	private JLabel errorLabel;
 	private LoginControl lc;
 	
-	// add LoginControl c once avaliable
 	public LoginPanel(LoginControl control) {
 		setLayout(null);
 		lc = control;
@@ -32,7 +32,7 @@ public class LoginPanel extends JPanel {
 		add(usernameField);
 		usernameField.setColumns(10);
 		
-		passwordField = new JTextField();
+		passwordField = new JPasswordField();
 		passwordField.setColumns(10);
 		passwordField.setBounds(170, 98, 212, 22);
 		add(passwordField);
@@ -50,11 +50,13 @@ public class LoginPanel extends JPanel {
 		JButton btnGo = new JButton("GO!");
 		btnGo.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
 		btnGo.setBounds(122, 142, 89, 23);
+		btnGo.addActionListener(lc);
 		add(btnGo);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
 		btnBack.setBounds(241, 142, 89, 23);
+		btnBack.addActionListener(lc);
 		add(btnBack);
 		
 		errorLabel = new JLabel("");
@@ -72,10 +74,11 @@ public class LoginPanel extends JPanel {
 	}
 	
 	public void setError(String text, Color color) {
-		
+		errorLabel.setText(text);
+		errorLabel.setBackground(color);
 	}
 	
 	public void setError(JLabel errorL) {
-		
+		errorLabel = errorL;
 	}
 }
