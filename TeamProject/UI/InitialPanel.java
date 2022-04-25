@@ -6,32 +6,33 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+
+import controllers.InitialControl;
+
 import java.awt.Color;
 
 public class InitialPanel extends JPanel {
-	// add InitialPanelControl c once avaliable
+	private static final long serialVersionUID = 1L;
+	private InitialControl ic;
+	
 	public InitialPanel() {
 		setLayout(null);
+		ic = new InitialControl(this);
 		
 		JLabel welcome = new JLabel("WELCOME TO BATTLESHIP!");
 		welcome.setBounds(37, 31, 373, 22);
 		welcome.setFont(new Font("Modern No. 20", Font.BOLD, 26));
 		add(welcome);
 		
-		JButton logIn = new JButton("Log In");
+		JButton logIn = new JButton("Create Account");
 		logIn.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
-		logIn.setBounds(91, 70, 100, 23);
+		logIn.setBounds(75, 70, 116, 23);
 		add(logIn);
 		
-		JButton newGameB = new JButton("New Game");
+		JButton newGameB = new JButton("Log In");
 		newGameB.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
-		newGameB.setBounds(91, 104, 100, 23);
+		newGameB.setBounds(75, 104, 116, 23);
 		add(newGameB);
-		
-		JButton boardSetupB = new JButton("Board Setup");
-		boardSetupB.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
-		boardSetupB.setBounds(91, 138, 100, 23);
-		add(boardSetupB);
 		
 		// we can change these names if we want, they don't really matter
 		JLabel lblNewLabel_1 = new JLabel("New user? Log in here.");
@@ -39,15 +40,10 @@ public class InitialPanel extends JPanel {
 		lblNewLabel_1.setBounds(201, 74, 164, 14);
 		add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Start a new game here!");
+		JLabel lblNewLabel_1_1 = new JLabel("Existing user? Log in here.");
 		lblNewLabel_1_1.setFont(new Font("Modern No. 20", Font.PLAIN, 14));
 		lblNewLabel_1_1.setBounds(201, 108, 164, 14);
 		add(lblNewLabel_1_1);
-		
-		JLabel lblNewLabel_1_2 = new JLabel("Go here to set up your board.");
-		lblNewLabel_1_2.setFont(new Font("Modern No. 20", Font.PLAIN, 14));
-		lblNewLabel_1_2.setBounds(201, 142, 164, 14);
-		add(lblNewLabel_1_2);
 		
 		JLabel lblCreatedByJackson = new JLabel("Jackson Torregrossa, Aaron Moody, Cypress Wright, and Levi Lewis");
 		lblCreatedByJackson.setForeground(Color.BLACK);
