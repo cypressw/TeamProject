@@ -12,16 +12,18 @@ import java.awt.Color;
 
 public class InitialControl implements ActionListener {
 	private JPanel container;
+	private GameClient client;
 	
-	public InitialControl(JPanel panel) {
+	public InitialControl(JPanel panel, GameClient client) {
 		setContainer(panel);
+		this.client = client;
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
 		String command = ae.getActionCommand();
 		
 		if (command.equals("Create Account")) {
-			CreateAccountPanel cap = (CreateAccountPanel)container.getComponent(1);
+			CreateAccountPanel cap = (CreateAccountPanel)container.getComponent(2);
 			cap.setError("", Color.RED);
 			CardLayout cl = (CardLayout)container.getLayout();
 			cl.show(container,  "3");

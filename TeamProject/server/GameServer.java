@@ -3,9 +3,8 @@ package server;
 import java.awt.*;
 import javax.swing.*;
 
-import controllers.CreateAccountData;
-import database.Database;
-import database.LoginData;
+import controllers.*;
+import database.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,17 +12,13 @@ import java.util.ArrayList;
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
 
-public class GameServer extends AbstractServer
-{
-	// Data fields for this chat server.
+public class GameServer extends AbstractServer {
 	private JTextArea log;
 	private JLabel status;
 	private boolean running = false;
 	private Database db;
 
-	// Constructor for initializing the server with default settings.
-	public GameServer()
-	{
+	public GameServer() {
 		super(12345);
 	    this.setTimeout(500);
 	    db = new Database("./database/db.properties");
@@ -34,14 +29,12 @@ public class GameServer extends AbstractServer
 	}
 	  
 	// Getter that returns whether the server is currently running.
-	public boolean isRunning()
-	{
+	public boolean isRunning() {
 	    return running;
 	}
 	  
 	// Setters for the data fields corresponding to the GUI elements.
-	public void setLog(JTextArea log)
-	{
+	public void setLog(JTextArea log) {
 	    this.log = log;
 	}
 	public void setStatus(JLabel status)
@@ -91,11 +84,10 @@ public class GameServer extends AbstractServer
 	    	LoginData data = (LoginData)arg0;
 	    	ArrayList<String> queryResult;
 	    	Object result;
-	    	String query = "";
 	      
-	    	query = "SELECT * FROM users WHERE username = \'" + data.getUsername() + "\' AND password = aes_encrypt(\'" 
-	    			+ data.getPassword() + "\', \'key11\');";
-	    	queryResult = db.query(query);
+	    	String toProcess = "SELECT * FROM users WHERE username = \'" + data.getUsername() + "\' AND password = aes_encrypt(\'" 
+	    			+ data.getPassword() + "\', \'key\');";
+	    	queryResult = db.query(toProcess);
 	      
 	    	if (!queryResult.isEmpty()) {
 	    		result = "LoginSuccessful";
@@ -124,18 +116,16 @@ public class GameServer extends AbstractServer
 	    	CreateAccountData data = (CreateAccountData)arg0;
 	    	ArrayList<String> queryResult;
 	    	Object result = new Object();
-	    	String query = "";
-	    	String dml = "";
 	      
-	    	query = "SELECT * FROM users WHERE username = \'" + data.getUsername() + "\';";
-	    	queryResult = db.query(query);
+	    	String toQuery = "SELECT * FROM users WHERE username = \'" + data.getUsername() + "\';";
+	    	queryResult = db.query(toQuery);
 	      
 	    	if (queryResult.isEmpty())
 	    	{
 	    		try {
-	    			dml = "INSERT INTO users(`username`, `password`) VALUES (\'" + data.getUsername() 
-	    				+ "\', aes_encrypt(\'" + data.getPassword() + "\', \'key11\'))";
-	    			db.executeDML(dml);
+	    			String toProcess = "INSERT INTO users(`username`, `password`) VALUES (\'" + data.getUsername() 
+	    				+ "\', aes_encrypt(\'" + data.getPassword() + "\', \'key\'))";
+	    			db.executeDML(toProcess);
 	    			result = "CreateAccountSuccessful";
 	    			log.append("Client " + arg1.getId() + " created a new account called " + data.getUsername() + "\n");
 	              
@@ -160,6 +150,9 @@ public class GameServer extends AbstractServer
 	    	{
 	    		return;
 	    	}
+	    }
+	    else if (arg0 instanceof GameplayControl) {
+	    	
 	    }
 	  }
 

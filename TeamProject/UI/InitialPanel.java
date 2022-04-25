@@ -20,44 +20,49 @@ public class InitialPanel extends JPanel {
 		ic = control;
 		
 		JLabel welcome = new JLabel("WELCOME TO BATTLESHIP!");
-		welcome.setBounds(37, 31, 373, 22);
-		welcome.setFont(new Font("Modern No. 20", Font.BOLD, 26));
+		welcome.setHorizontalAlignment(SwingConstants.CENTER);
+		welcome.setBounds(127, 10, 555, 80);
+		welcome.setFont(new Font("Modern No. 20", Font.BOLD, 38));
 		add(welcome);
 		
-		JButton logIn = new JButton("Create Account");
-		logIn.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
-		logIn.setBounds(75, 70, 116, 23);
-		add(logIn);
+		JButton create = new JButton("Create Account");
+		create.setFont(new Font("Modern No. 20", Font.PLAIN, 18));
+		create.setBounds(218, 134, 147, 45);
+		create.addActionListener(ic);
+		add(create);
 		
-		JButton newGameB = new JButton("Log In");
-		newGameB.setFont(new Font("Modern No. 20", Font.PLAIN, 13));
-		newGameB.setBounds(75, 104, 116, 23);
-		add(newGameB);
+		JButton login = new JButton("Log In");
+		login.setFont(new Font("Modern No. 20", Font.PLAIN, 18));
+		login.setBounds(218, 209, 147, 45);
+		login.addActionListener(ic);
+		add(login);
 		
 		// we can change these names if we want, they don't really matter
 		JLabel lblNewLabel_1 = new JLabel("New user? Log in here.");
-		lblNewLabel_1.setFont(new Font("Modern No. 20", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(201, 74, 164, 14);
+		lblNewLabel_1.setFont(new Font("Modern No. 20", Font.PLAIN, 18));
+		lblNewLabel_1.setBounds(423, 155, 227, 14);
 		add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Existing user? Log in here.");
-		lblNewLabel_1_1.setFont(new Font("Modern No. 20", Font.PLAIN, 14));
-		lblNewLabel_1_1.setBounds(201, 108, 164, 14);
+		lblNewLabel_1_1.setFont(new Font("Modern No. 20", Font.PLAIN, 18));
+		lblNewLabel_1_1.setBounds(423, 219, 227, 24);
 		add(lblNewLabel_1_1);
 		
 		JLabel lblCreatedByJackson = new JLabel("Jackson Torregrossa, Aaron Moody, Cypress Wright, and Levi Lewis");
 		lblCreatedByJackson.setForeground(Color.BLACK);
 		lblCreatedByJackson.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCreatedByJackson.setFont(new Font("Modern No. 20", Font.BOLD, 14));
-		lblCreatedByJackson.setBounds(10, 260, 430, 29);
+		lblCreatedByJackson.setFont(new Font("Modern No. 20", Font.BOLD, 23));
+		lblCreatedByJackson.setBounds(10, 561, 698, 29);
 		add(lblCreatedByJackson);
 		
 		JLabel lblCreatedBy = new JLabel("Created by:");
 		lblCreatedBy.setForeground(Color.BLACK);
 		lblCreatedBy.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCreatedBy.setFont(new Font("Modern No. 20", Font.BOLD, 17));
-		lblCreatedBy.setBounds(10, 233, 430, 29);
+		lblCreatedBy.setFont(new Font("Modern No. 20", Font.BOLD, 24));
+		lblCreatedBy.setBounds(10, 522, 430, 29);
 		add(lblCreatedBy);
+		
+		this.setSize(800, 600);
 		
 	}
 }
