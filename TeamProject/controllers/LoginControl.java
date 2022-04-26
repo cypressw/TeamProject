@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import UI.LoginPanel;
 import database.LoginData;
+import database.Player;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -33,7 +34,7 @@ public class LoginControl implements ActionListener {
 	    else if (command.equals("GO!"))
 	    {
 	    	LoginPanel loginPanel = (LoginPanel)container.getComponent(1);
-	    	LoginData data = new LoginData(loginPanel.getUsername(), loginPanel.getPassword());
+	    	data = new LoginData(loginPanel.getUsername(), loginPanel.getPassword());
 	      
 	    	// Check the validity of the information locally first.
 	    	if (data.getUsername().equals("") || data.getPassword().equals(""))
@@ -55,6 +56,7 @@ public class LoginControl implements ActionListener {
 	}
 	
 	public void loginSuccessful() {
+		client.setPlayer(new Player(data, client.getId()));
 		LoginPanel loginPanel = (LoginPanel)container.getComponent(1);
 	    CardLayout cardLayout = (CardLayout)container.getLayout();
 	    cardLayout.show(container, "6");

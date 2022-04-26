@@ -6,7 +6,6 @@ import java.util.*;
 
 public class Database {
 	private Connection conn;
-	private HashMap<String, Player> players;
 	  
 	//Add any other data fields you like – at least a Connection object is mandatory
 	public Database(String fn)
@@ -51,26 +50,17 @@ public class Database {
 	    return conn;
 	}
 	
-	public void setPlayers(HashMap<String, Player> users) {
-		players = users;
-	}
-	
 	public boolean addPlayers(Player newUser) {
 		String dml = "INSERT INTO `users`(`username`, `password`) VALUES (\'" 
 				+ newUser.getUsername() + "\', aes_encrypt(\'" + newUser.getPassword() 
 				+ "\', \'key\'));";
 		try {
 			executeDML(dml);
-			players.put(newUser.getUsername(), newUser);
 		} catch (Exception e) {
 			return false;
 		};
 		
 		return true;
-	}
-	
-	public HashMap<String, Player> getPlayers() {
-		return players;
 	}
 	  
 	public ArrayList<String> query(String query)

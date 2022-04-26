@@ -9,28 +9,17 @@ public class Game {
 	private Board board2;
 	private String status;
 	private Player activePlayer;
-	private int gameID;
 	
 	public Game() {
-		gameID = 0;
 		player1 = null;
 		player2 = null;
 		board1 = null;
 		board2 = null;
 	}
 	
-	public Game(int id, Player p1, Player p2, Board b1, Board b2) {
-		setID(id);
+	public Game(Player p1, Player p2, Board b1, Board b2) {
 		setPlayer(p1);
 		setPlayer(p2);
-	}
-	
-	public void setID(int id) {
-		gameID = id;
-	}
-	
-	public int getID() {
-		return gameID;
 	}
 	
 	public void setPlayer(Player player) {

@@ -2,37 +2,20 @@ package controllers;
 
 import java.io.*;
 
+import database.Player;
+
 public class AwaitOpponentData implements Serializable{
-	private String gameID;
-	private String username;
-	private String status;
+	private Player player;
 	
-	public AwaitOpponentData(String user, String gameID) {
-		setGameID(gameID);
-		setUsername(user);
+	public AwaitOpponentData(Player user) {
+		setPlayer(player);
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 	
-	public void setGameID(String id) {
-		gameID = id;
-	}
-	
-	public String getGameID() {
-		return gameID;
-	}
-	
-	public void setUsername(String user) {
-		username = user;
-	}
-	
-	public String getUsername() {
-		return username;
-	}
-	
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	public String getStatus() {
-		return status;
+	public Player getPlayer() {
+		return player;
 	}
 }

@@ -8,6 +8,7 @@ import database.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
@@ -17,11 +18,13 @@ public class GameServer extends AbstractServer {
 	private JLabel status;
 	private boolean running = false;
 	private Database db;
+	private ArrayList<Player> onlinePlayers;
+	private HashMap<Player, Game> games;
 
 	public GameServer() {
 		super(12345);
 	    this.setTimeout(500);
-	    db = new Database("./TeamProject/database/db.properties");
+	    db = new Database("./database/db.properties");
 	}
 
 	public void setDatabase(Database database) {
@@ -72,6 +75,13 @@ public class GameServer extends AbstractServer {
 	public void clientConnected(ConnectionToClient client)
 	{
 	    log.append("Client " + client.getId() + " connected\n");
+	    
+	    try {
+			client.sendToClient(client.getId());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	// When a message is received from a client, handle it.
@@ -90,12 +100,13 @@ public class GameServer extends AbstractServer {
 	    	queryResult = db.query(toProcess);
 	      
 	    	if (!queryResult.isEmpty()) {
-	    		result = "LoginSuccessful";
 	    		log.append("Client " + arg1.getId() + " successfully logged in as " + data.getUsername() + "\n");
+	    		onlinePlayers.add(new Player(data, arg1.getId()));
+	    		result = onlinePlayers;
 	    	}
 	    	else {
 	    		result = new Error("The username and password are incorrect.", "Login");
-	    		log.append("Client " + arg1.getId() + " failed to log in\n");
+	    		log.append("Client " + arg1.getId() + " failed to log in\n");	
 	    	}
 	      
 	    	// Send the result to the client.
@@ -151,7 +162,18 @@ public class GameServer extends AbstractServer {
 	    		return;
 	    	}
 	    }
-	    else if (arg0 instanceof GameplayControl) {
+	    else if (arg0 instanceof LobbyData) {
+	    	
+	    }
+	    else if (arg0 instanceof AwaitOpponentData) {
+	    	Object result;
+	    	Player host = ((AwaitOpponentData) arg0).getPlayer();
+	    	Game newGame = new Game();
+	    	newGame.setPlayer(host);
+	    	games.put(host, newGame);
+	    	result = "Game Created";
+	    }
+	    else if (arg0 instanceof GameplayData) {
 	    	
 	    }
 	  }
@@ -165,4 +187,20 @@ public class GameServer extends AbstractServer {
 		  log.append("Listening exception: " + exception.getMessage() + "\n");
 		  log.append("Press Listen to restart server\n");
 	  }
+
+	public ArrayList<Player> getPlayers() {
+		return onlinePlayers;
+	}
+
+	public void setPlayers(ArrayList<Player> players) {
+		this.onlinePlayers = players;
+	}
+
+	public HashMap<Player, Game> getGames() {
+		return games;
+	}
+
+	public void setGames(HashMap<Player, Game> games) {
+		this.games = games;
+	}
 }

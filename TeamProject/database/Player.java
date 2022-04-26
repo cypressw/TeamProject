@@ -1,11 +1,13 @@
 package database;
 
 public class Player {
+	private long id;
 	private LoginData credentials;
 	private boolean connected;
 	
-	public Player(LoginData ld) {
+	public Player(LoginData ld, long id) {
 		setCredentials(ld);
+		this.id = id;
 	}
 	
 	public void setCredentials(LoginData ld) {
@@ -30,5 +32,13 @@ public class Player {
 	
 	public boolean getConnected() {
 		return connected;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 }
