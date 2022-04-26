@@ -50,15 +50,18 @@ public class BoardSetupPanel extends JPanel {
 			}
 		}
 		
+		// STATUS LABEL
 		status = new JLabel("Place your Carrier (5 spaces)");
 		status.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		status.setHorizontalAlignment(SwingConstants.CENTER);
 		add(status, BorderLayout.NORTH);
 		
+		
+		// LEFT PANEL
 		JPanel spacer1 = new JPanel();
 		add(spacer1, BorderLayout.WEST);
 		spacer1.setLayout(new BorderLayout(0, 0));
-		
+	
 		JPanel orientation = new JPanel();
 		spacer1.add(orientation, BorderLayout.NORTH);
 		orientation.setLayout(new BorderLayout());
@@ -70,17 +73,19 @@ public class BoardSetupPanel extends JPanel {
 		JButton vertical = new JButton("Vertical");
 		orientation.add(vertical, BorderLayout.WEST);
 		
+		// RIGHT PANEL
 		JPanel spacer2 = new JPanel();
 		FlowLayout fl_spacer2 = (FlowLayout) spacer2.getLayout();
 		fl_spacer2.setHgap(50);
 		add(spacer2, BorderLayout.EAST);
 		
+		
+		// BUTTON PANEL (SOUTH)
 		JPanel buttonPanel = new JPanel();
 		FlowLayout fl_buttonPanel = (FlowLayout) buttonPanel.getLayout();
 		fl_buttonPanel.setVgap(15);
 		add(buttonPanel, BorderLayout.SOUTH);
-		
-		
+	
 		JButton nextShipButton = new JButton("Place Ship");
 		nextShipButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		buttonPanel.add(nextShipButton);
