@@ -1,6 +1,8 @@
 package database;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
 	private long id;
 	private LoginData credentials;
 	private boolean connected;

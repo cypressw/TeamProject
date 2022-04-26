@@ -50,11 +50,13 @@ public class LobbyPanel extends JPanel {
 		JButton btnNewButton = new JButton("Join Selected");
 		btnNewButton.setFont(new Font("Modern No. 20", Font.PLAIN, 24));
 		btnNewButton.setBounds(41, 63, 178, 55);
+		btnNewButton.addActionListener(lc);
 		add(btnNewButton);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setFont(new Font("Modern No. 20", Font.PLAIN, 24));
 		btnBack.setBounds(398, 63, 177, 55);
+		btnBack.addActionListener(lc);
 		add(btnBack);
 		
 		errorLabel = new JLabel("");
@@ -65,11 +67,13 @@ public class LobbyPanel extends JPanel {
 		JButton btnCreateNew = new JButton("Create New");
 		btnCreateNew.setFont(new Font("Modern No. 20", Font.PLAIN, 24));
 		btnCreateNew.setBounds(574, 63, 187, 55);
+		btnCreateNew.addActionListener(lc);
 		add(btnCreateNew);
 		
 		JButton btnJoin = new JButton("Join Selected");
 		btnJoin.setFont(new Font("Modern No. 20", Font.PLAIN, 24));
 		btnJoin.setBounds(219, 63, 180, 55);
+		btnJoin.addActionListener(lc);
 		add(btnJoin);
 		
 	}

@@ -22,7 +22,7 @@ public class CreateAccountControl implements ActionListener {
 	}
 	
 	public void createAccountSuccess() {
-		((CreateAccountPanel) container).setError("Account Created Successfully! Press back to log in.", Color.GREEN);
+		((CreateAccountPanel) container).setError("Account Created! Press back to login.", Color.GREEN);
 	}
 	
 	public void createAccountFailed(String error) {

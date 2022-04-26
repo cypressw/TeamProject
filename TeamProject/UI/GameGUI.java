@@ -42,6 +42,7 @@ public class GameGUI extends JFrame {
 		WinLoseControl wlc = new WinLoseControl(container, client);
 		LogoutControl loc = new LogoutControl(container, client);
 		
+		client.setInitialControl(ic);
 		client.setLoginControl(lc);
 		client.setCreateAccountControl(cac);
 		client.setAwaitOpponentControl(aoc);

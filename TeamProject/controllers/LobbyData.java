@@ -12,6 +12,7 @@ public class LobbyData implements Serializable{
 	
 	public LobbyData(String user, String command) {
 		setUsername(user);
+		setCommand(command);
 //		setChosenGame(game);
 	}
 

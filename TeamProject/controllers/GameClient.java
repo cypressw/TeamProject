@@ -25,6 +25,7 @@ public class GameClient extends AbstractClient
 	private Game game;
 	private Player player;
 	private long id;
+	private InitialControl ic;
 	
 	public GameClient() {
 		super("localhost", 8300);
@@ -119,10 +120,6 @@ public class GameClient extends AbstractClient
  			this.setId(((Long) arg0).longValue());
  		}
  		
-// 		else if (arg0 instanceof ArrayList) {
-// 			loginc.loginSuccessful();
-// 		}
- 		
  		else if (arg0 instanceof HashMap) {
  			lobc.displayOnlineGames((HashMap<String, Game>) arg0);
  		}
@@ -138,5 +135,9 @@ public class GameClient extends AbstractClient
  				cac.displayError(error.getMessage());
  			}
  		}
- 	}  
+ 	}
+
+	public void setInitialControl(InitialControl ic) {
+		this.ic = ic;
+	}  
 }
