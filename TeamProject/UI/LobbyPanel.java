@@ -20,6 +20,7 @@ public class LobbyPanel extends JPanel {
 	public LobbyPanel(LobbyControl control) {
 		setLayout(null);
 		lc = control;
+		this.setSize(800, 545);
 		
 		JLabel lblLobby = new JLabel("LOBBY");
 		lblLobby.setHorizontalAlignment(SwingConstants.CENTER);

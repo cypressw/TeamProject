@@ -1,29 +1,31 @@
 package controllers;
 
+import database.Game;
 import database.Player;
 import java.io.*;
+
+import gamedetails.Board;
 import gamedetails.Space;
 
 public class GameplayData implements Serializable{
 	private Space guess;
-	private Player player;
 	private String status;
-	private String gameID;
+	private Game game;
 	
-	public GameplayData(Space guess, Player p, String status, String id) {
-		setPlayer(p);
+	public GameplayData(Space guess, String status, Game game) {
+		//setPlayer(p);
 		setGuess(guess);
 		setStatus(status);
-		setGameID(id);
+		setGame(game);
 	}
 	
-	public void setPlayer(Player user) {
-		player = user;
-	}
-	
-	public Player getPlayer() {
-		return player;
-	}
+//	public void setPlayer(Player user) {
+//		player = user;
+//	}
+//	
+//	public Player getPlayer() {
+//		return player;
+//	}
 	
 	public void setStatus(String status) {
 		this.status = status;
@@ -33,19 +35,19 @@ public class GameplayData implements Serializable{
 		return status;
 	}
 	
-	public void setGameID(String id) {
-		gameID = id;
-	}
-	
-	public String getGameID() {
-		return gameID;
-	}
-	
 	public void setGuess(Space guess) {
 		this.guess = guess;
 	}
 	
 	public Space getGuess() {
 		return guess;
+	}
+
+	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
 	}
 }

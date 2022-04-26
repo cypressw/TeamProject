@@ -68,7 +68,7 @@ public class GameGUI extends JFrame {
 	    
 	    this.add(container);
 
-	    this.setSize(800, 575);
+	    this.setSize(800, 545);
 	    this.setResizable(true);
 	    this.setVisible(true);
 	}

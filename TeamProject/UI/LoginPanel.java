@@ -66,7 +66,7 @@ public class LoginPanel extends JPanel {
 		errorLabel.setBounds(33, 427, 732, 67);
 		add(errorLabel);
 		
-		this.setPreferredSize(new Dimension(800, 540));
+		this.setPreferredSize(new Dimension(800, 545));
 	}
 	
 	public String getPassword() {

@@ -23,6 +23,7 @@ public class CreateAccountPanel extends JPanel {
 	public CreateAccountPanel(CreateAccountControl control) {
 		setLayout(null);
 		cac = control;
+		this.setSize(800, 545);
 		
 		JLabel lblLogIn = new JLabel("CREATE ACCOUNT");
 		lblLogIn.setHorizontalAlignment(SwingConstants.CENTER);
