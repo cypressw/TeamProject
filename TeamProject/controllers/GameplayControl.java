@@ -5,6 +5,8 @@ import javax.swing.*;
 import database.Game;
 import gamedetails.Space;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.*;
 import java.io.IOException;
 
@@ -19,30 +21,15 @@ public class GameplayControl implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
-		String command = ae.getActionCommand();
-		String xCoord = command.substring(0, 0);
-		String yCoord = command.substring(1);
-		int x = Integer.parseInt(xCoord);
-		int y = Integer.parseInt(yCoord);
-		
-		Space guess = new Space(x, y);
-		
-		GameplayData data = new GameplayData(guess, "Their Turn", client.getGame());
-		
-		try {
-			client.sendToServer(data);
-		} catch (IOException e) {
-			e.printStackTrace();
-//			displayError()
-		};
+		String cellValue = ae.getActionCommand();
+		System.out.println("Cell " + cellValue + " has been selected!");
 	}
 	
 	public void guess() {
-
+		
 	}
 	
 	public void switchPlayers() {
-		
 		Game temp = data.getGame();
 	}
 	
