@@ -3,6 +3,7 @@ package controllers;
 import database.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.*;
 import ocsf.client.*;
@@ -93,12 +94,8 @@ public class GameClient extends AbstractClient
  				cac.createAccountSuccess();
  			}
  			
- 			else if (message.equals("GameSelected")) {
- 				lobc.connectToGame();
- 			}
- 			
- 			else if (message.equals("CreateNewGame")) {
- 				lobc.createNewGame();
+ 			else if (message.equals("LoginSuccessful")) {
+ 				loginc.loginSuccessful();
  			}
  			
  			else if (message.equals("OpponentConnected")) {
@@ -108,14 +105,26 @@ public class GameClient extends AbstractClient
  			else if (message.equals("GuessMade")) {
  				
  			}
+ 			
+ 			else if (message.equals("GameConnectSuccess")) {
+ 				lobc.gameConnectSuccess();
+ 			}
+ 			
+ 			else if (message.equals("GameCreateSuccess")) {
+ 				lobc.gameCreateSuccess();
+ 			}
  		}
  		
  		else if (arg0 instanceof Long) {
  			this.setId(((Long) arg0).longValue());
  		}
  		
- 		else if (arg0 instanceof ArrayList) {
- 			loginc.loginSuccessful();
+// 		else if (arg0 instanceof ArrayList) {
+// 			loginc.loginSuccessful();
+// 		}
+ 		
+ 		else if (arg0 instanceof HashMap) {
+ 			lobc.displayOnlineGames((HashMap<String, Game>) arg0);
  		}
  		
  		else if (arg0 instanceof Error) {

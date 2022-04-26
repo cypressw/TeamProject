@@ -56,8 +56,7 @@ public class LoginControl implements ActionListener {
 	}
 	
 	public void loginSuccessful() {
-		client.setPlayer(new Player(data, client.getId()));
-		LoginPanel loginPanel = (LoginPanel)container.getComponent(1);
+		client.setPlayer(new Player(data));
 	    CardLayout cardLayout = (CardLayout)container.getLayout();
 	    cardLayout.show(container, "6");
 	}

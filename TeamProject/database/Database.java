@@ -76,7 +76,7 @@ public class Database {
 				result.add(rs.getString("password"));
 				//counter++;
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

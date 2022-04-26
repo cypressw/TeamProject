@@ -140,8 +140,9 @@ public class ServerGUI extends JFrame {
 					server.setTimeout(Integer.parseInt(textFields[1].getText()));
 					try {
 						server.listen();
+						server.serverStarted();
 					} catch (IOException e1) {
-						log.append("An exception occurred: " + e1.getMessage() + "\n");
+						server.listeningException(e1);
 					}
 				}
 			}

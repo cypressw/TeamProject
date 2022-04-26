@@ -1,5 +1,6 @@
 package controllers;
 
+import java.awt.CardLayout;
 import java.awt.event.*;
 import java.io.IOException;
 import java.util.HashMap;
@@ -24,21 +25,13 @@ public class LobbyControl implements ActionListener {
 		
 	}
 	
-	public void createNewGame() {
-		
-	}
-	
-	public void connectToGame() {
-		
-	}
-	
 	public void actionPerformed(ActionEvent ae) {
 		String command = ae.getActionCommand();
 		
 		if (command.equals("Join Selected")) {
 			String choice = ((LobbyPanel) container).getChosenGame();
-			String username = client.getPlayer().getUsername();
-			data = new LobbyData(username, choice);
+			data = new LobbyData(choice, command);
+			data.setPlayer(client.getPlayer());
 			
 			try {
 				client.sendToServer(data);
@@ -46,14 +39,30 @@ public class LobbyControl implements ActionListener {
 				e.printStackTrace();
 			};
 		}
+		else if (command.equals("Create New")) {
+			String username = client.getPlayer().getUsername();
+			data = new LobbyData(username, command);
+			data.setPlayer(client.getPlayer());
+			try {
+				client.sendToServer(data);
+			} catch(IOException e) {
+				e.printStackTrace();
+			};
+		}
+		else if (command.equals("Back")) {
+			CardLayout cl = (CardLayout)container.getLayout();
+			cl.show(container, "1");
+		}
 	}
 	
 	public void gameConnectSuccess() {
-		
+		CardLayout cl = (CardLayout)container.getLayout();
+		cl.show(container, "5");
 	}
 	
 	public void gameCreateSuccess() {
-		
+		CardLayout cl = (CardLayout)container.getLayout();
+		cl.show(container, "4");
 	}
 
 	public JPanel getContainer() {
@@ -80,9 +89,9 @@ public class LobbyControl implements ActionListener {
 		this.client = client;
 	}
 	
-	public void displayOnlineGames(HashMap<Player, Game> games) {
-		for (Player p : games.keySet()) {
-			((LobbyPanel) container).addToGamesList(p.getUsername());
+	public void displayOnlineGames(HashMap<String, Game> games) {
+		for (String s : games.keySet()) {
+			((LobbyPanel) container).addToGamesList(s);
 		}
 	}
 }

@@ -5,9 +5,9 @@ public class Player {
 	private LoginData credentials;
 	private boolean connected;
 	
-	public Player(LoginData ld, long id) {
+	public Player(LoginData ld) {
 		setCredentials(ld);
-		this.id = id;
+//		this.id = id;
 	}
 	
 	public void setCredentials(LoginData ld) {

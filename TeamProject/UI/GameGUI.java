@@ -12,7 +12,6 @@ import controllers.*;
 public class GameGUI extends JFrame {
 	private GameClient client;
 	private CardLayout cardLayout;
-	private Database db;
 	private JPanel container;
 
 	public GameGUI() {
@@ -28,7 +27,6 @@ public class GameGUI extends JFrame {
 
 		this.setTitle("BATTLESHIP!");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		db = new Database("./database/db.properties");
 
 		cardLayout = new CardLayout();
 		container = new JPanel(cardLayout);
@@ -43,6 +41,15 @@ public class GameGUI extends JFrame {
 		GameplayControl gc = new GameplayControl(container, client);
 		WinLoseControl wlc = new WinLoseControl(container, client);
 		LogoutControl loc = new LogoutControl(container, client);
+		
+		client.setLoginControl(lc);
+		client.setCreateAccountControl(cac);
+		client.setAwaitOpponentControl(aoc);
+		client.setBoardSetupControl(bsc);
+		client.setLobbyControl(lobc);
+		client.setGameplayControl(gc);
+		client.setWinLoseControl(wlc);
+		client.setLogoutControl(loc);
 
 		// views setup + add to container
 		JPanel InitialPanel = new InitialPanel(ic);
