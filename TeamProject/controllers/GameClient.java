@@ -1,6 +1,9 @@
 package controllers;
 
 import database.*;
+
+import java.util.ArrayList;
+
 import javax.swing.*;
 import ocsf.client.*;
 
@@ -19,6 +22,8 @@ public class GameClient extends AbstractClient
 	private WinLoseControl wlc;
 	private LogoutControl logout;
 	private Game game;
+	private Player player;
+	private long id;
 	
 	public GameClient() {
 		super("localhost", 8300);
@@ -64,15 +69,27 @@ public class GameClient extends AbstractClient
 		this.game = game;
 	}
 
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public void handleMessageFromServer(Object arg0) {
  		if (arg0 instanceof String) {
  			String message = (String)arg0;
       
- 			if (message.equals("LoginSuccessful")) {
- 				loginc.loginSuccessful();
- 			}
-
- 			else if (message.equals("CreateAccountSuccessful")) {
+ 			if (message.equals("CreateAccountSuccessful")) {
  				cac.createAccountSuccess();
  			}
  			
@@ -85,14 +102,22 @@ public class GameClient extends AbstractClient
  			}
  			
  			else if (message.equals("OpponentConnected")) {
- 				aoc.connectionDetected();
+ 				//aoc.connectionDetected();
  			}
  			
  			else if (message.equals("GuessMade")) {
  				
  			}
  		}
-    
+ 		
+ 		else if (arg0 instanceof Long) {
+ 			this.setId(((Long) arg0).longValue());
+ 		}
+ 		
+ 		else if (arg0 instanceof ArrayList) {
+ 			loginc.loginSuccessful();
+ 		}
+ 		
  		else if (arg0 instanceof Error) {
  			Error error = (Error)arg0;
 

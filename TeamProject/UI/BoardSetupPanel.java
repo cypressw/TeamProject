@@ -15,11 +15,20 @@ import javax.swing.border.LineBorder;
 
 import controllers.BoardSetupControl;
 import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
 
 public class BoardSetupPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JLabel status;
 	private BoardSetupControl bsc;
+	private JButton confirmBoard;
+	private JLabel orientLbl;
 	
 	public BoardSetupPanel(BoardSetupControl control) {
 		setLayout(new BorderLayout(0, 0));
@@ -47,9 +56,19 @@ public class BoardSetupPanel extends JPanel {
 		add(status, BorderLayout.NORTH);
 		
 		JPanel spacer1 = new JPanel();
-		FlowLayout fl_spacer1 = (FlowLayout) spacer1.getLayout();
-		fl_spacer1.setHgap(50);
 		add(spacer1, BorderLayout.WEST);
+		spacer1.setLayout(new BorderLayout(0, 0));
+		
+		JPanel orientation = new JPanel();
+		spacer1.add(orientation, BorderLayout.NORTH);
+		orientation.setLayout(new BorderLayout());
+		
+		orientLbl = new JLabel("Ship Orientation: H");
+		orientation.add(orientLbl, BorderLayout.NORTH);
+		JButton horizontal = new JButton("Horizontal");
+		orientation.add(horizontal, BorderLayout.EAST);
+		JButton vertical = new JButton("Vertical");
+		orientation.add(vertical, BorderLayout.WEST);
 		
 		JPanel spacer2 = new JPanel();
 		FlowLayout fl_spacer2 = (FlowLayout) spacer2.getLayout();
@@ -61,13 +80,17 @@ public class BoardSetupPanel extends JPanel {
 		fl_buttonPanel.setVgap(15);
 		add(buttonPanel, BorderLayout.SOUTH);
 		
-		JButton btnNewButton = new JButton("Confirm");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		buttonPanel.add(btnNewButton);
 		
-		JButton btnBack = new JButton("Back");
-		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		buttonPanel.add(btnBack);
+		JButton nextShipButton = new JButton("Place Ship");
+		nextShipButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		buttonPanel.add(nextShipButton);
+		
+		confirmBoard = new JButton("Confirm Board");
+		confirmBoard.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		confirmBoard.setVisible(false);
+		buttonPanel.add(confirmBoard);
+		
+		
 		
 	}
 	
@@ -90,5 +113,17 @@ public class BoardSetupPanel extends JPanel {
 	public void setErrorLabel(String text, Color color) {
 		status.setText(text);
 		status.setBackground(color);
+	}
+	
+	public JButton getConfirm() {
+		return confirmBoard;
+	}
+	
+	
+	public void setOrientLbl(JLabel label) {
+		this.orientLbl = label;
+	}
+	public JLabel getOrientLbl() {
+		return orientLbl;
 	}
 }

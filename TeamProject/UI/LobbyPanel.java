@@ -1,21 +1,27 @@
 package UI;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.text.DefaultCaret;
 
 import controllers.LobbyControl;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 public class LobbyPanel extends JPanel {
-	private JTextArea gamesList;
+	private JList<String> gamesList;
 	private JLabel errorLabel;
 	private LobbyControl lc;
+	private DefaultListModel<String> list;
 	
 	public LobbyPanel(LobbyControl control) {
 		setLayout(null);
@@ -28,12 +34,18 @@ public class LobbyPanel extends JPanel {
 		lblLobby.setBounds(254, 19, 284, 33);
 		add(lblLobby);
 		
-		gamesList = new JTextArea();
-		gamesList.setEditable(false);
-		gamesList.setForeground(Color.GRAY);
-		gamesList.setFont(new Font("Modern No. 20", Font.BOLD, 15));
-		gamesList.setBounds(41, 129, 720, 379);
-		add(gamesList);
+		list = new DefaultListModel<String>();
+		
+		gamesList = new JList<String>(list);
+		gamesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		gamesList.setLayoutOrientation(JList.VERTICAL);
+		gamesList.setVisibleRowCount(-1);
+		gamesList.setPreferredSize(new Dimension(20, 379));
+		gamesList.setFont(gamesList.getFont().deriveFont(Font.PLAIN));
+		JPanel gamesListBuffer = new JPanel();
+		gamesListBuffer.setBounds(41, 129, 720, 379);
+		gamesListBuffer.add(gamesList);
+		add(gamesListBuffer);
 		
 		JButton btnNewButton = new JButton("Join Selected");
 		btnNewButton.setFont(new Font("Modern No. 20", Font.PLAIN, 24));
@@ -63,18 +75,19 @@ public class LobbyPanel extends JPanel {
 	}
 	
 	public String getChosenGame() {
-		return "";
+		return gamesList.getSelectedValue();
 	}
 	
 	public void setError(String text, Color color) {
-		
+		errorLabel.setText(text);
+		errorLabel.setBackground(color);
 	}
 	
 	public void setError(JLabel errorL) {
-		
+		errorLabel = errorL;
 	}
 	
-	public void setInfo(JLabel info) {
-		
+	public void addToGamesList(String game) {
+		list.addElement(game);
 	}
 }

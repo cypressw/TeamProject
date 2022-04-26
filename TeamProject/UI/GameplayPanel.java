@@ -1,136 +1,116 @@
 package UI;
 
-import java.awt.BorderLayout;
 import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import controllers.GameplayControl;
 import gamedetails.Board;
 
 public class GameplayPanel extends JPanel {
-	private final int FIELD_SIZE = 34;
-	private Board board;
-	private JLabel status;
+	private JButton cell[] = new JButton[100];
 	private GameplayControl gpc;
+	private char letter;
 	
 	public GameplayPanel(GameplayControl control) {
-		gpc = control;	
-		setLayout(new BorderLayout(0, 0));
-		this.setSize(800, 545);
+		gpc = control;
+		this.setPreferredSize(new Dimension(867, 658));
+		setLayout(null);
 		
-		JPanel boardPanel = new JPanel();
-		add(boardPanel, BorderLayout.CENTER);
+		// text to let you know you are where you're supposed to be
+		JLabel title = new JLabel("GAME SCREEN");
+		title.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		title.setBounds(10, 11, 164, 38);
+		add(title);
 		
+		// THIS WILL CONTAIN ALL OUR BUTTONS
+		JPanel boardContainer = new JPanel(new GridLayout(10, 10)); // set size for container
+		boardContainer.setBounds(257, 47, 600, 600);
+		boardContainer.setPreferredSize(new Dimension(600, 600));
+		boardContainer.setBorder(BorderFactory.createLineBorder(Color.RED));
+		this.add(boardContainer);
+		
+		// GRID BAG FORMAT (what formats the buttons)
 		GridBagConstraints c = new GridBagConstraints();
-	    c.fill = GridBagConstraints.BOTH;
-	    
-		JPanel playerBoard = new JPanel();
-		boardPanel.add(playerBoard);
-		playerBoard.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		playerBoard.setLayout(new GridLayout(10, 10, 10, 0));
-		for (int i = 1; i <= 10; i++) {
-			for (int j = 1; j <= 10; j++) {
-//				JPanel temp = new JPanel();
-//				String row = Integer.toString(i);
-//				String column = Integer.toString(j);
-//				String name = row + column;
-//				Button space = new Button();
-//				space.setEnabled(false);
-//				space.setActionCommand(name);
-//				temp.add(space);
-//				playerBoard.add(temp);
-				JButton button = new JButton();
-		        button.setBackground(new Color(131, 209, 232));
-		        button.setBorder(BorderFactory.createLineBorder(new Color(32, 156, 185)));
-		        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		        button.setPreferredSize(new java.awt.Dimension(FIELD_SIZE, FIELD_SIZE));
-		        
-		        // add button to GUI grid-manager
-		        setField(j, i, button);
-		        
-		        // set field position
-		        c.gridx = j;
-		        c.gridy = i;
-		        
-		        // add field to the grid
-		        this.add(button, c);
-			}
-		}
 		
-		JPanel opponentBoard = new JPanel();
-		boardPanel.add(opponentBoard);
-		opponentBoard.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		opponentBoard.setLayout(new GridLayout(10, 10, 10, 0));
-		for (int i = 1; i <= 10; i++) {
-			for (int j = 1; j <= 10; j++) {
-				JPanel temp = new JPanel();
-				String row = Integer.toString(i);
-				String column = Integer.toString(j);
-				String name = row + column;
-				Button space = new Button();
-				space.setActionCommand(name);
-				temp.add(space);
-				opponentBoard.add(temp);
-			}
-		}
+		// set number of columns and rows (and other things)
+		c.insets = new Insets(10, 10, 10, 10);
+		c.weightx = 1;
+		c.gridwidth = 60;
 		
-		JPanel labelPanel = new JPanel();
-		add(labelPanel, BorderLayout.NORTH);
-		labelPanel.setLayout(new GridLayout(0, 3, 0, 20));
+		// DO IT
+		build(boardContainer, c);
 		
-		JPanel lp1 = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) lp1.getLayout();
-		flowLayout.setVgap(30);
-		labelPanel.add(lp1);
+		JLabel lblNewLabel = new JLabel("A");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lblNewLabel.setBounds(214, 57, 42, 50);
+		add(lblNewLabel);
 		
-		JLabel playerLabel = new JLabel("Your Board");
-		playerLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lp1.add(playerLabel);
-		playerLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		
-		JPanel lp2 = new JPanel();
-		FlowLayout flowLayout_1 = (FlowLayout) lp2.getLayout();
-		flowLayout_1.setVgap(20);
-		labelPanel.add(lp2);
-		
-		status = new JLabel("");
-		lp2.add(status);
-		status.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		status.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		JPanel lp3 = new JPanel();
-		FlowLayout flowLayout_2 = (FlowLayout) lp3.getLayout();
-		flowLayout_2.setVgap(20);
-		labelPanel.add(lp3);
-		
-		JLabel opponentLabel = new JLabel("Their Board");
-		opponentLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lp3.add(opponentLabel);
-		opponentLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		
-		JPanel buttonPanel = new JPanel();
-		FlowLayout fl_buttonPanel = (FlowLayout) buttonPanel.getLayout();
-		fl_buttonPanel.setVgap(30);
-		add(buttonPanel, BorderLayout.SOUTH);
-		
-		JButton btnNewButton = new JButton("Confirm");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		buttonPanel.add(btnNewButton);
-		
-		JButton btnBack = new JButton("Back");
-		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		buttonPanel.add(btnBack);
-		
+		JLabel lblNewLabel_1 = new JLabel("1");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lblNewLabel_1.setBounds(257, -1, 50, 50);
+		add(lblNewLabel_1);
 	}
 	
-	private void setField(int j, int i, JButton button) {
-		// TODO Auto-generated method stub
-		
+	public void build(JPanel board, GridBagConstraints c) {
+		// render buttons
+		for (int i = 0; i < 100; i++) {
+			// decide location
+			// letter = annoyingLogic(i);
+			
+			// build 
+			cell[i] = new JButton(String.valueOf(i + 1));
+			cell[i].setFont(new Font("Tahoma", Font.BOLD, 11));
+			
+			// add action listener
+			cell[i].addActionListener(gpc);
+			
+			// add to boardContainer
+			board.add(cell[i]);
+		}
 	}
-
-	public void setInfo(String text, Color color) {
+	
+	public char annoyingLogic(int i) {
+		// annoying logic
+		if (i >= 9 && i <= 18) {
+			letter = 'B';
+		}
+		else if (i >= 18 && i <= 27) {
+			letter = 'C';
+		}
+		else if (i >= 27 && i <= 36) {
+			letter = 'D';
+		}
+		else if (i >= 36 && i <= 45) {
+			letter = 'E';
+		}
+		else if (i >= 45 && i <= 54) {
+			letter = 'F';
+		}
+		else if (i >= 54 && i <= 63) {
+			letter = 'G';
+		}
+		else if (i >= 63 && i <= 72) {
+			letter = 'H';
+		}
+		else if (i >= 72 && i <= 81) {
+			letter = 'I';
+		}
+		else if (i >= 81 && i <= 90) {
+			letter = 'J';
+		}
+		else if (i >= 90 && i <= 99) {
+			letter = 'K';
+		}
+		
+		return letter;
+	}
+	
+	public void setError(String string, Color red) {
 		
 	}
 }

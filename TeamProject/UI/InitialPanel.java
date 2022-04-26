@@ -39,6 +39,13 @@ public class InitialPanel extends JPanel {
 		login.addActionListener(ic);
 		add(login);
 		
+		JButton DEBUG = new JButton("DEBUG");
+		DEBUG.setFont(new Font("Tahoma", Font.BOLD, 11));
+		DEBUG.setForeground(new Color(0, 139, 139));
+		DEBUG.setBounds(10, 410, 89, 23);
+		DEBUG.addActionListener(ic);
+		add(DEBUG);
+		
 		// we can change these names if we want, they don't really matter
 		JLabel lblNewLabel_1 = new JLabel("New user? Log in here.");
 		lblNewLabel_1.setFont(new Font("Modern No. 20", Font.PLAIN, 23));
@@ -54,7 +61,7 @@ public class InitialPanel extends JPanel {
 		lblCreatedByJackson.setForeground(Color.BLACK);
 		lblCreatedByJackson.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCreatedByJackson.setFont(new Font("Modern No. 20", Font.BOLD, 23));
-		lblCreatedByJackson.setBounds(10, 483, 698, 29);
+		lblCreatedByJackson.setBounds(10, 472, 698, 29);
 		add(lblCreatedByJackson);
 		
 		JLabel lblCreatedBy = new JLabel("Created by:");

@@ -2,13 +2,15 @@ package controllers;
 
 import java.io.*;
 
+import database.Game;
+
 public class LobbyData implements Serializable{
 	private String username;
-	private String chosenGameID;
+	private String chosenGame;
 	
-	public LobbyData(String user, String id) {
+	public LobbyData(String user, String game) {
 		setUsername(user);
-		setChosenGameID(id);
+		setChosenGame(game);
 	}
 
 	public String getUsername() {
@@ -19,12 +21,12 @@ public class LobbyData implements Serializable{
 		this.username = username;
 	}
 
-	public String getChosenGameID() {
-		return chosenGameID;
+	public String getChosenGame() {
+		return chosenGame;
 	}
 
-	public void setChosenGameID(String chosenGameID) {
-		this.chosenGameID = chosenGameID;
+	public void setChosenGame(String chosenGame) {
+		this.chosenGame = chosenGame;
 	}
 	
 }

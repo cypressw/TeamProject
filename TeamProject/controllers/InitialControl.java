@@ -3,6 +3,7 @@ package controllers;
 import javax.swing.*;
 
 import UI.CreateAccountPanel;
+import UI.GameplayPanel;
 import UI.InitialPanel;
 import UI.LoginPanel;
 
@@ -33,6 +34,12 @@ public class InitialControl implements ActionListener {
 			lp.setError("", Color.RED);
 			CardLayout cl = (CardLayout)container.getLayout();
 			cl.show(container, "2");
+		}
+		else if (command.equals("DEBUG")) {
+			GameplayPanel gp = (GameplayPanel)container.getComponent(6);
+			gp.setError("", Color.RED);
+			CardLayout cl = (CardLayout)container.getLayout();
+			cl.show(container, "7");
 		}
 	}
 
