@@ -1,0 +1,17 @@
+/AwaitOpponentControl.class
+/AwaitOpponentData.class
+/BoardSetupControl.class
+/BoardSetupData.class
+/CreateAccountControl.class
+/CreateAccountData.class
+/GameClient.class
+/GameplayControl.class
+/GameplayData.class
+/InitialControl.class
+/LobbyControl.class
+/LobbyData.class
+/LoginControl.class
+/LogoutControl.class
+/LogoutData.class
+/WinLoseControl.class
+/WinLoseData.class
