@@ -18,6 +18,15 @@ public class Ship {
 		health = size;
 		horizontal = true;
 	}
+	
+	public Ship(String name, int size) {
+		this.name = name;
+		this.size = size;
+		spacesOccupied = new ArrayList<Space>();
+		health = size;
+		horizontal = true;
+	}
+	
 
 	public void setName(String name) {
 		this.name = name;
