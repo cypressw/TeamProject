@@ -44,7 +44,7 @@ public class CreateAccountControl implements ActionListener {
 	    	String passwordVerify = createAccountPanel.getVerifyPassword();
 
 	    	if (username.equals("") || password.equals("")) {
-	    		displayError("You must enter a username and password (also re-enter the password!).");
+	    		displayError("You must enter a username and password.");
 	    		return;
 	    	}
 	    	

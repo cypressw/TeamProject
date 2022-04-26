@@ -9,12 +9,14 @@ public class Ship {
 	private ArrayList<Space> spacesOccupied;
 	private int health;
 	private Board board;
+	private boolean horizontal;
 
 	public Ship() {
 		name = "unnamed ship";
 		size = 0;
 		spacesOccupied = new ArrayList<Space>();
 		health = size;
+		horizontal = true;
 	}
 
 	public void setName(String name) {
@@ -49,6 +51,13 @@ public class Ship {
 		return health;
 	}
 
+	public void setHorizontal(boolean b) {
+		horizontal = b;
+	}
+	
+	public boolean getHorizontal() {
+		return horizontal;
+	}
 
 	public Board getBoard() {
 		return board;

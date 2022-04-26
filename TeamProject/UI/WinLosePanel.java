@@ -19,6 +19,7 @@ public class WinLosePanel extends JPanel {
 	public WinLosePanel(WinLoseControl control) {
 		setLayout(null);
 		wlc = control;
+		this.setSize(800, 545);
 		
 		// eventually, message will replace "you lost"
 		JLabel lblYouLost = new JLabel("YOU LOST!");

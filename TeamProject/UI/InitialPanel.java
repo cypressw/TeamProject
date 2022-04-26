@@ -23,7 +23,7 @@ public class InitialPanel extends JPanel {
 		JLabel welcome = new JLabel("WELCOME TO BATTLESHIP!");
 		welcome.setHorizontalAlignment(SwingConstants.CENTER);
 		welcome.setBounds(72, 26, 648, 80);
-		welcome.setFont(new Font("Modern No. 20", Font.BOLD, 46));
+		welcome.setFont(new Font("Modern No. 20", Font.BOLD, 44));
 		add(welcome);
 		
 		JButton create = new JButton("Create Account");
@@ -47,7 +47,7 @@ public class InitialPanel extends JPanel {
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Existing user? Log in here.");
 		lblNewLabel_1_1.setFont(new Font("Modern No. 20", Font.PLAIN, 23));
-		lblNewLabel_1_1.setBounds(401, 251, 250, 24);
+		lblNewLabel_1_1.setBounds(401, 251, 292, 24);
 		add(lblNewLabel_1_1);
 		
 		JLabel lblCreatedByJackson = new JLabel("Jackson Torregrossa, Aaron Moody, Cypress Wright, and Levi Lewis");
@@ -64,6 +64,6 @@ public class InitialPanel extends JPanel {
 		lblCreatedBy.setBounds(10, 444, 430, 29);
 		add(lblCreatedBy);
 		
-		this.setPreferredSize(new Dimension(800, 540));
+		this.setPreferredSize(new Dimension(800, 545));
 	}
 }

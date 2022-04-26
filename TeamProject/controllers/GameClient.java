@@ -18,6 +18,7 @@ public class GameClient extends AbstractClient
 	private BoardSetupControl bsc;
 	private WinLoseControl wlc;
 	private LogoutControl logout;
+	private Game game;
 	
 	public GameClient() {
 		super("localhost", 8300);
@@ -55,7 +56,15 @@ public class GameClient extends AbstractClient
 		this.logout = logout;
 	}
 	
- 	public void handleMessageFromServer(Object arg0) {
+ 	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
+	public void handleMessageFromServer(Object arg0) {
  		if (arg0 instanceof String) {
  			String message = (String)arg0;
       

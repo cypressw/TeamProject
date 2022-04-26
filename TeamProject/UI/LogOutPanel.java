@@ -18,6 +18,7 @@ public class LogOutPanel extends JPanel {
 	public LogOutPanel(String message, LogoutControl control) {
 		setLayout(null);
 		loc = control;
+		this.setSize(800, 545);
 		
 		// do we really need a message here?
 		JLabel lblAreYouSure = new JLabel("Are you sure you want to log out?");

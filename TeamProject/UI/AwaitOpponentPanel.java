@@ -17,10 +17,11 @@ public class AwaitOpponentPanel extends JPanel {
 	public AwaitOpponentPanel(AwaitOpponentControl control) {
 		setLayout(null);
 		aoc = control;
+		this.setSize(800, 545);
 		
 		status = new JLabel("WAITING FOR PLAYER...");
 		status.setHorizontalAlignment(SwingConstants.CENTER);
-		status.setFont(new Font("Modern No. 20", Font.BOLD | Font.ITALIC, 59));
+		status.setFont(new Font("Modern No. 20", Font.BOLD | Font.ITALIC, 56));
 		status.setBounds(41, 211, 724, 73);
 		add(status);
 	}
