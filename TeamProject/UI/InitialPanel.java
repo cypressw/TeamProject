@@ -49,7 +49,7 @@ public class InitialPanel extends JPanel {
 		// we can change these names if we want, they don't really matter
 		JLabel lblNewLabel_1 = new JLabel("New user? Log in here.");
 		lblNewLabel_1.setFont(new Font("Modern No. 20", Font.PLAIN, 23));
-		lblNewLabel_1.setBounds(401, 144, 227, 35);
+		lblNewLabel_1.setBounds(401, 144, 292, 35);
 		add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Existing user? Log in here.");
@@ -60,8 +60,8 @@ public class InitialPanel extends JPanel {
 		JLabel lblCreatedByJackson = new JLabel("Jackson Torregrossa, Aaron Moody, Cypress Wright, and Levi Lewis");
 		lblCreatedByJackson.setForeground(Color.BLACK);
 		lblCreatedByJackson.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCreatedByJackson.setFont(new Font("Modern No. 20", Font.BOLD, 23));
-		lblCreatedByJackson.setBounds(10, 472, 698, 29);
+		lblCreatedByJackson.setFont(new Font("Dialog", Font.BOLD, 20));
+		lblCreatedByJackson.setBounds(10, 472, 727, 29);
 		add(lblCreatedByJackson);
 		
 		JLabel lblCreatedBy = new JLabel("Created by:");

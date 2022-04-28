@@ -16,14 +16,13 @@ public class GameGUI extends JFrame {
 
 	public GameGUI() {
 		client = new GameClient();
-		client.setHost("localhost");
+		client.setHost("10.251.88.173");
 		client.setPort(8300);
 		try {
 			client.openConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		;
 
 		this.setTitle("BATTLESHIP!");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -78,7 +77,7 @@ public class GameGUI extends JFrame {
 		this.add(container);
 
 		this.setSize(800, 545);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.setVisible(true);
 	}
 

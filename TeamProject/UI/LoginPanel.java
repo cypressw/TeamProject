@@ -39,13 +39,13 @@ public class LoginPanel extends JPanel {
 		add(passwordField);
 		
 		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setFont(new Font("Modern No. 20", Font.PLAIN, 30));
-		lblUsername.setBounds(160, 195, 222, 30);
+		lblUsername.setFont(new Font("Dialog", Font.PLAIN, 25));
+		lblUsername.setBounds(160, 199, 222, 30);
 		add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setFont(new Font("Modern No. 20", Font.PLAIN, 30));
-		lblPassword.setBounds(160, 240, 222, 30);
+		lblPassword.setFont(new Font("Dialog", Font.PLAIN, 25));
+		lblPassword.setBounds(160, 235, 222, 30);
 		add(lblPassword);
 		
 		JButton btnGo = new JButton("GO!");
